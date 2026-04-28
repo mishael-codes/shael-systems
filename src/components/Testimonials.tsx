@@ -14,7 +14,7 @@ const testimonials = [
     name: "Jemimah Fagbemi",
     role: "CEO, Jemmy-Glam",
     image:
-      "/public/images/Jemimah-Fagbemi.jpeg",
+      "images/Jemimah-Fagbemi.jpeg",
     text: "Shael Systems provided a professional platform for my business, allowing clients to view my service menu and schedule appointments with much greater efficiency.",
   },
   {
