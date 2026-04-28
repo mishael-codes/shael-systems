@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     question: "How much does a website cost?",
-    answer: "Our packages start at $799 for a simple website and go up to $2,999+ for custom web applications. The exact price depends on your specific needs, features, and complexity. We offer transparent pricing with no hidden fees.",
+    answer: "Our packages start at ₦150,000 for a simple website and go up to ₦750,000+ for custom web applications. The exact price depends on your specific needs, features, and complexity. We offer transparent pricing with no hidden fees.",
   },
   {
     question: "How long does it take to build a website?",

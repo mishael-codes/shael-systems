@@ -12,7 +12,7 @@ export function ContactCTA() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
     // In a real application, this would send to a backend
     alert("Thanks for reaching out! We'll get back to you soon.");
@@ -20,7 +20,7 @@ export function ContactCTA() {
   };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/1234567890?text=Hi, I'm interested in your web services", "_blank");
+    window.open("https://wa.me/+2348084602067?text=Hi, I'm interested in your web services", "_blank");
   };
 
   return (
