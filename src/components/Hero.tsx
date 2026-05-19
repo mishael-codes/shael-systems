@@ -1,6 +1,7 @@
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+// import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "./ui/button";
+import Hero3DMonogram from "./ui/hero-monogram";
 
 export function Hero() {
   const handleWhatsApp = () => {
@@ -49,13 +50,14 @@ export function Hero() {
 
           {/* Right Image */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            {/* <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1630522790545-67ad2cb700fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBsYXB0b3AlMjB3ZWJzaXRlJTIwbW9ja3VwfGVufDF8fHx8MTc3NjQwMTEyMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="Modern website mockup on laptop"
                 className="w-full h-auto"
-              />
-            </div>
+              /> */}
+              <Hero3DMonogram />
+            {/* </div> */}
 
             {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>

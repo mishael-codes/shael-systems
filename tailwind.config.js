@@ -64,6 +64,20 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      animation: {
+        spinX: "spinX 8s linear infinite",
+        spinY: "spinY 6s linear infinite",
+      },
+      keyframes: {
+        spinX: {
+          "0%": { transform: "rotateX(0deg)" },
+          "100%": { transform: "rotateX(360deg)" },
+        },
+        spinY: {
+          "0%": { transform: "rotateY(0deg)" },
+          "100%": { transform: "rotateY(360deg)" },
+        },
+      },
     },
   },
   plugins: [],

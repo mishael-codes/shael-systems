@@ -20,12 +20,12 @@ const projects = [
     tags: ["Client Inquiry Portal", "Responsive Design"],
   },
   {
-    title: "Business Analytics",
+    title: "Cuttr",
     description:
-      "Custom reporting platform for a consulting firm. Streamlined client reporting.",
+      "Created a user-friendly dashboard for a link shortening service, allowing users to easily manage and track their shortened URLs with real-time analytics and a clean, intuitive interface",
     image:
-      "https://images.unsplash.com/photo-1608222351212-18fe0ec7b13b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGFuYWx5dGljcyUyMGRhc2hib2FyZHxlbnwxfHx8fDE3NzYzOTk3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    tags: ["Business", "Data", "Reports"],
+      "images/cuttr.png",
+    tags: ["Authentication", "CRUD", "Basic Analytics"],
   },
 ];
 
