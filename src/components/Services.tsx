@@ -50,7 +50,10 @@ const packages = [
 export function Services() {
   const handleChoosePlan = (planName: string) => {
     const message = `Hi! I'm interested in the ${planName} package.`;
-    window.open(`https://wa.me/2348167177172?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(
+      `https://wa.me/2348167177172?text=${encodeURIComponent(message)}`,
+      "_blank",
+    );
   };
 
   return (
@@ -61,7 +64,8 @@ export function Services() {
             Choose Your Perfect Plan
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Transparent pricing with no hidden fees. All packages include modern design and clean code.
+            Transparent pricing with no hidden fees. All packages include modern
+            design and clean code.
           </p>
         </div>
 
@@ -69,10 +73,11 @@ export function Services() {
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className={`p-8 relative ${pkg.popular
+              className={`p-8 relative ${
+                pkg.popular
                   ? "z-10 overflow-visible border-2 border-blue-600 shadow-xl scale-105"
                   : "border border-gray-200"
-                }`}
+              }`}
             >
               {pkg.popular && (
                 <div className="absolute -top-4 left-1/2 z-20 -translate-x-1/2">
@@ -83,9 +88,13 @@ export function Services() {
               )}
 
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {pkg.name}
+                </h3>
                 <p className="text-gray-600 mb-4">{pkg.description}</p>
-                <div className="text-4xl font-bold text-gray-900">{pkg.price}</div>
+                <div className="text-4xl font-bold text-gray-900">
+                  {pkg.price}
+                </div>
               </div>
 
               <ul className="space-y-4 mb-8">
@@ -98,10 +107,11 @@ export function Services() {
               </ul>
 
               <Button
-                className={`w-full ${pkg.popular
+                className={`w-full ${
+                  pkg.popular
                     ? "bg-blue-600 hover:bg-blue-700"
                     : "bg-gray-900 hover:bg-gray-800"
-                  }`}
+                }`}
                 size="lg"
                 onClick={() => handleChoosePlan(pkg.name)}
               >

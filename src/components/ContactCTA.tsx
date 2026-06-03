@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -137,7 +143,9 @@ export function ContactCTA() {
             "error-callback": () => {
               console.warn("[hCaptcha] challenge error callback fired");
               setCaptchaToken("");
-              setCaptchaError("The captcha could not be loaded. Please try again.");
+              setCaptchaError(
+                "The captcha could not be loaded. Please try again.",
+              );
               if (inputsRef.current.token) {
                 inputsRef.current.token.value = "";
               }
@@ -224,7 +232,9 @@ export function ContactCTA() {
     void handleSubmit(async (data: contactData) => {
       try {
         if (!captchaToken) {
-          setCaptchaError("Please complete the hCaptcha challenge before sending.");
+          setCaptchaError(
+            "Please complete the hCaptcha challenge before sending.",
+          );
           return;
         }
 
