@@ -70,12 +70,12 @@ export function Services() {
             <Card
               key={index}
               className={`p-8 relative ${pkg.popular
-                  ? "border-2 border-blue-600 shadow-xl scale-105"
+                  ? "z-10 overflow-visible border-2 border-blue-600 shadow-xl scale-105"
                   : "border border-gray-200"
                 }`}
             >
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <div className="absolute -top-4 left-1/2 z-20 -translate-x-1/2">
                   <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
                     Most Popular
                   </span>

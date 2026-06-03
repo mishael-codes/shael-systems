@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useRef, type SubmitEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { MessageCircle, Mail, Send } from "lucide-react";
 import { Card } from "./ui/card";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 declare global {
@@ -24,6 +24,7 @@ declare global {
         size?: "invisible" | "compact" | "normal";
         callback?: (token: string) => void;
         "error-callback"?: () => void;
+        "expired-callback"?: () => void;
       },
     ) => number;
     execute: (widgetId: number) => void;
@@ -33,7 +34,6 @@ declare global {
     hcaptcha?: HCaptcha;
     __hcaptchaWidgetId?: number;
     __hcaptchaResolve?: ((token: string) => void) | undefined;
-    __hcaptchaOnLoad?: () => void;
   }
 }
 
@@ -48,12 +48,19 @@ export function ContactCTA() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<contactData>({ resolver: zodResolver(contactFormSchema) });
+    control,
+    formState: { errors, isSubmitting, isValid },
+  } = useForm<contactData>({
+    resolver: zodResolver(contactFormSchema),
+    mode: "onChange",
+  });
 
   const captchaRef = useRef<HTMLDivElement | null>(null);
   const captchaRenderedRef = useRef(false);
   const formRef = useRef<HTMLFormElement | null>(null);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaReady, setCaptchaReady] = useState(false);
+  const [captchaError, setCaptchaError] = useState("");
   const inputsRef = useRef<{
     name?: HTMLInputElement;
     email?: HTMLInputElement;
@@ -66,6 +73,10 @@ export function ContactCTA() {
 
   useEffect(() => {
     const siteKey = import.meta.env.VITE_HCAPTCHA_SITE_KEY;
+    console.log("[hCaptcha] bootstrap start", {
+      hasSiteKey: Boolean(siteKey),
+      hasWindowHcaptcha: Boolean(window.hcaptcha),
+    });
 
     // Create a single hidden form and inputs to reuse on every submit — avoids DOM churn
     if (!formRef.current) {
@@ -94,7 +105,7 @@ export function ContactCTA() {
       formRef.current = form;
     }
 
-    // Render helper that only renders when the hcaptcha API is ready.
+    // Render helper that only renders when the hCaptcha API is ready.
     const renderWidget = () => {
       if (
         siteKey &&
@@ -103,46 +114,99 @@ export function ContactCTA() {
         !captchaRenderedRef.current &&
         typeof window.__hcaptchaWidgetId !== "number"
       ) {
+        console.log("[hCaptcha] rendering widget");
         captchaRenderedRef.current = true;
-        const widgetId = window.hcaptcha.render(captchaRef.current, {
-          sitekey: siteKey!,
-          size: "invisible",
-          callback: (token: string) => {
-            if (window.__hcaptchaResolve) {
-              window.__hcaptchaResolve(token);
-              window.__hcaptchaResolve = undefined;
-            }
-          },
-          "error-callback": () => {
-            if (window.__hcaptchaResolve) {
-              window.__hcaptchaResolve("");
-              window.__hcaptchaResolve = undefined;
-            }
-          },
-        });
-        window.__hcaptchaWidgetId = widgetId;
+        try {
+          const widgetId = window.hcaptcha.render(captchaRef.current, {
+            sitekey: siteKey!,
+            size: "normal",
+            callback: (token: string) => {
+              console.log("[hCaptcha] challenge solved", {
+                tokenLength: token.length,
+              });
+              setCaptchaError("");
+              setCaptchaToken(token);
+              if (inputsRef.current.token) {
+                inputsRef.current.token.value = token;
+              }
+              if (window.__hcaptchaResolve) {
+                window.__hcaptchaResolve(token);
+                window.__hcaptchaResolve = undefined;
+              }
+            },
+            "error-callback": () => {
+              console.warn("[hCaptcha] challenge error callback fired");
+              setCaptchaToken("");
+              setCaptchaError("The captcha could not be loaded. Please try again.");
+              if (inputsRef.current.token) {
+                inputsRef.current.token.value = "";
+              }
+              if (window.__hcaptchaResolve) {
+                window.__hcaptchaResolve("");
+                window.__hcaptchaResolve = undefined;
+              }
+            },
+            "expired-callback": () => {
+              console.warn("[hCaptcha] challenge expired");
+              setCaptchaToken("");
+              setCaptchaError("The captcha expired. Please complete it again.");
+              if (inputsRef.current.token) {
+                inputsRef.current.token.value = "";
+              }
+            },
+          });
+          window.__hcaptchaWidgetId = widgetId;
+          setCaptchaReady(true);
+          console.log("[hCaptcha] widget rendered", { widgetId });
+        } catch (error) {
+          console.error("[hCaptcha] render failed", error);
+        }
         return true;
+      }
+      if (!siteKey) {
+        console.warn("[hCaptcha] VITE_HCAPTCHA_SITE_KEY is missing");
+      } else if (!window.hcaptcha) {
+        console.log("[hCaptcha] API not ready yet");
       }
       return false;
     };
 
-    // Use explicit render and onload callback to ensure we don't try to render
-    // before the hcaptcha script has fully initialized.
+    // Use explicit render and a load listener to ensure we don't try to render
+    // before the hCaptcha script has fully initialized.
     if (window.hcaptcha) {
+      console.log("[hCaptcha] API already available, rendering now");
       renderWidget();
     } else {
       const existing = document.querySelector(
-        'script[src^="https://hcaptcha.com/1/api.js"]',
+        'script[src^="https://js.hcaptcha.com/1/api.js"]',
       );
-      // Prepare a global onload callback name that hcaptcha will call when ready.
-      window.__hcaptchaOnLoad = () => renderWidget();
-      const onloadParam = "__hcaptchaOnLoad";
+
+      const handleLoad = () => {
+        console.log("[hCaptcha] script load event fired");
+        renderWidget();
+      };
+
+      const handleError = () => {
+        console.error("[hCaptcha] script failed to load");
+      };
+
       if (!existing) {
         const script = document.createElement("script");
-        script.src = `https://hcaptcha.com/1/api.js?render=explicit&onload=${onloadParam}`;
+        script.src = "https://js.hcaptcha.com/1/api.js?render=explicit";
         script.async = true;
         script.defer = true;
+        script.addEventListener("load", handleLoad, { once: true });
+        script.addEventListener("error", handleError, { once: true });
+        console.log("[hCaptcha] injecting script", script.src);
         document.head.appendChild(script);
+      } else {
+        console.log("[hCaptcha] script tag already present");
+        existing.addEventListener("load", handleLoad, { once: true });
+        existing.addEventListener("error", handleError, { once: true });
+        if (window.hcaptcha) {
+          console.log("[hCaptcha] existing script already initialized");
+          renderWidget();
+        }
       }
     }
     return () => {
@@ -151,21 +215,19 @@ export function ContactCTA() {
         formRef.current.parentNode.removeChild(formRef.current);
         formRef.current = null;
       }
-      // remove global onload callback to avoid leaking globals
-      try {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if ((window as any).__hcaptchaOnLoad)
-          delete (window as any).__hcaptchaOnLoad;
-      } catch (error) {
-        console.error("Failed to remove hCaptcha onload callback", error);
-      }
     };
   }, []);
 
-  const submitHandler = (e: SubmitEvent<HTMLFormElement>) => {
-    // Build the actual submit callback at event-time so refs aren't accessed during render
-    handleSubmit(async (data: contactData) => {
+  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    void handleSubmit(async (data: contactData) => {
       try {
+        if (!captchaToken) {
+          setCaptchaError("Please complete the hCaptcha challenge before sending.");
+          return;
+        }
+
         if (!formRef.current || !inputsRef.current)
           throw new Error("Form not ready");
 
@@ -180,27 +242,7 @@ export function ContactCTA() {
         subject.value = `Website contact: ${data.name}`;
         template.value = "table";
         next.value = "/thank-you";
-        if (token) token.value = ""; // clear previous token
-
-        const siteKey = import.meta.env.VITE_HCAPTCHA_SITE_KEY;
-        if (
-          siteKey &&
-          window.hcaptcha &&
-          typeof window.__hcaptchaWidgetId === "number"
-        ) {
-          const widgetId = window.__hcaptchaWidgetId as number;
-          const t: string = await new Promise((resolve) => {
-            window.__hcaptchaResolve = (tok: string) => resolve(tok);
-            try {
-              window.hcaptcha!.execute(widgetId);
-            } catch (err) {
-              console.log("hCaptcha execution error:", err);
-              // resolution with empty token on error
-              resolve("");
-            }
-          });
-          if (t && token) token.value = t;
-        }
+        if (token) token.value = captchaToken;
 
         formRef.current.submit();
       } catch (err) {
@@ -209,8 +251,7 @@ export function ContactCTA() {
           "There was an error sending your message. Please try again later.",
         );
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    })(e as unknown as any);
+    })(event);
   };
 
   const handleWhatsApp = useCallback(() => {
@@ -219,6 +260,19 @@ export function ContactCTA() {
       "_blank",
     );
   }, []);
+
+  const [nameValue, emailValue, messageValue] = useWatch({
+    control,
+    name: ["name", "email", "message"],
+  });
+  const canSubmit =
+    isValid &&
+    (nameValue ?? "").trim().length > 0 &&
+    (emailValue ?? "").trim().length > 0 &&
+    (messageValue ?? "").trim().length > 0 &&
+    captchaReady &&
+    Boolean(captchaToken) &&
+    !isSubmitting;
 
   return (
     <section
@@ -244,13 +298,12 @@ export function ContactCTA() {
               <h3 className="text-2xl font-semibold">Send us a message</h3>
             </div>
 
-            <form onSubmit={submitHandler} className="space-y-4">
+            <form onSubmit={submitHandler} noValidate className="space-y-4">
               <div>
                 <Input
                   type="text"
                   placeholder="Your Name"
                   {...register("name")}
-                  required
                   className="w-full"
                 />
                 {errors.name && (
@@ -265,7 +318,6 @@ export function ContactCTA() {
                   type="email"
                   placeholder="Your Email"
                   {...register("email")}
-                  required
                   className="w-full"
                 />
                 {errors.email && (
@@ -279,7 +331,6 @@ export function ContactCTA() {
                 <Textarea
                   placeholder="Tell us about your project..."
                   {...register("message")}
-                  required
                   className="w-full min-h-32"
                 />
                 {errors.message && (
@@ -287,14 +338,20 @@ export function ContactCTA() {
                     {errors.message?.message}
                   </p>
                 )}
-                <div ref={captchaRef} />
+              </div>
+
+              <div>
+                <div ref={captchaRef} className="min-h-[82px]" />
+                {captchaError && (
+                  <p className="mt-2 text-sm text-red-600">{captchaError}</p>
+                )}
               </div>
 
               <Button
                 type="submit"
                 className="w-full bg-blue-600 hover:bg-blue-700"
                 size="lg"
-                disabled={isSubmitting}
+                disabled={!canSubmit}
               >
                 <Send className="mr-2 h-5 w-5" />
                 {isSubmitting ? "Sending..." : "Send Message"}
