@@ -266,7 +266,7 @@ export function ContactCTA() {
 
   const handleWhatsApp = useCallback(() => {
     window.open(
-      "https://wa.me/+2348084602067?text=Hi, I'm interested in your web services",
+      "https://wa.me/+2348067575432?text=Hi, I'm interested in your web services",
       "_blank",
     );
   }, []);

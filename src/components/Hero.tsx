@@ -6,7 +6,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function Hero() {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/1234567890?text=Hi, I'm interested in your web services", "_blank");
+    window.open("https://wa.me/+2348067575432?text=Hi, I'm interested in your web services", "_blank");
   };
 
   const handleGetStarted = () => {
