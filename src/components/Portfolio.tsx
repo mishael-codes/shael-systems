@@ -1,6 +1,7 @@
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ExternalLink } from "lucide-react";
 import { Card } from "./ui/card";
+import Link from "next/link";
 
 const projects = [
   {
@@ -71,9 +72,9 @@ export function Portfolio() {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+               <Link href={project.link}> <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {project.title}
-                </h3>
+                </h3></Link>
                 <p className="text-gray-600 mb-4">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2">
