@@ -1,7 +1,7 @@
 // import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "./ui/button";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+//import { ImageWithFallback } from "./figma/ImageWithFallback";
 // import Hero3DMonogram from "./ui/hero-monogram";
 
 export function Hero() {
