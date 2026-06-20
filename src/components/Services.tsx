@@ -75,7 +75,7 @@ export function Services() {
               key={index}
               className={`p-8 relative ${
                 pkg.popular
-                  ? "z-10 overflow-visible border-2 border-blue-600 shadow-xl scale-105"
+                  ? "z-10 overflow-visible border-2 border-blue-600 shadow-xl scale-105 mt-4 md:mt-0"
                   : "border border-gray-200"
               }`}
             >
