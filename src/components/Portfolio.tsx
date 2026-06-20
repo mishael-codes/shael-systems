@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const projects = [
   {
-    title: "Gift Pasries",
+    title: "Gift Pastries",
     description:
       "Designed and developed a visually-driven e-commerce landing page for a boutique bakery. The site features a categorized product gallery and a specialized ordering system that translates complex custom cake requirements into structured WhatsApp inquiries",
     image: "images/gift-pastries.png",
