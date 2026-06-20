@@ -1,5 +1,6 @@
 import { CheckCircle2, Zap, Smartphone, Target } from "lucide-react";
 import { Card } from "./ui/card";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const solutions = [
   {
@@ -37,13 +38,13 @@ export function Solution() {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-5">
           {solutions.map((solution, index) => {
             const Icon = solution.icon;
             return (
               <Card
                 key={index}
-                className="p-8 text-center hover:shadow-xl transition-all hover:-translate-y-1"
+                className="p-8 flex flex-col items-center justify-center text-center hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white mb-6">
                   <Icon className="w-8 h-8" />
@@ -58,6 +59,11 @@ export function Solution() {
             );
           })}
         </div>
+        {/* <ImageWithFallback
+          src="/images/results.png"
+          alt="results.png"
+          className="w-full h-auto object-contain"
+        /> */}
       </div>
     </section>
   );

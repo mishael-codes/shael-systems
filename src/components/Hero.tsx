@@ -52,10 +52,12 @@ export function Hero() {
           {/* Right Image */}
           <div className="relative">
            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <ImageWithFallback
-                src="/images/S-LOGO.png"
-                alt="Modern website mockup on laptop"
-                className="w-full h-auto"
+              <video
+                src="/videos/min-store-demo.webm"
+                autoPlay
+                loop
+                muted
+                className="w-full h-auto lg:h-[400px] object-cover"
               />
               {/* <Hero3DMonogram /> */}
             </div>

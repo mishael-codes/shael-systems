@@ -6,7 +6,7 @@ const packages = [
   {
     name: "Starter",
     description: "Perfect for small businesses getting online",
-    price: "₦150,000",
+    price: "₦250,000",
     features: [
       "Simple website (1-3 pages)",
       "Mobile responsive design",
@@ -33,7 +33,7 @@ const packages = [
   {
     name: "Premium",
     description: "Complete digital transformation",
-    price: "₦750,000+",
+    price: "₦1,000,000+",
     features: [
       "Custom web app features",
       "User Authentication",
