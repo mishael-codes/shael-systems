@@ -57,7 +57,7 @@ export function Hero() {
                 autoPlay
                 loop
                 muted
-                className="w-full h-auto lg:h-[400px] object-cover"
+                className="w-full h-[400px] object-cover"
               />
               {/* <Hero3DMonogram /> */}
             </div>
