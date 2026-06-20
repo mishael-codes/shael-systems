@@ -1,6 +1,6 @@
 import { CheckCircle2, Zap, Smartphone, Target } from "lucide-react";
 import { Card } from "./ui/card";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+//import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const solutions = [
   {
