@@ -25,6 +25,7 @@ const projects = [
       "Created a user-friendly dashboard for a link shortening service, allowing users to easily manage and track their shortened URLs with real-time analytics and a clean, intuitive interface",
     image:
       "images/cuttr.png",
+    link: "https://cuttr.vercel.app",
     tags: ["Authentication", "CRUD", "Basic Analytics"],
   },
 ];
