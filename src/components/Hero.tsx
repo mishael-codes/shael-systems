@@ -57,6 +57,8 @@ export function Hero() {
                 autoPlay
                 loop
                 muted
+                playsInline
+                preload="metadata"
                 className="w-full h-[400px] object-cover"
               />
               {/* <Hero3DMonogram /> */}

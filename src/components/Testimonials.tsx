@@ -7,14 +7,14 @@ const testimonials = [
     name: "Gift Owayo",
     role: "Owner, Artisan Bakery",
     image:
-      "images/gift-owayo.jpeg",
+      "images/gift-owayo.webp",
     text: "The website is exceptionally well designed to convert visitors into customers. The WhatsApp ordering feature provides a fast and seamless communication channel, making it especially convenient for customers in Nigeria. Clear calls-to-action, transparent pricing, and an intuitive layout create a smooth user journey that naturally encourages visitors to place an order.",
   },
   {
     name: "Jemimah Fagbemi",
     role: "CEO, Jemmy-Glam",
     image:
-      "images/Jemimah-Fagbemi.jpeg",
+      "images/Jemimah-Fagbemi.webp",
     text: "Shael Systems provided a professional platform for my business, allowing clients to view my service menu and schedule appointments with much greater efficiency.",
   },
   {

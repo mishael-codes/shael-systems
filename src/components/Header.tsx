@@ -28,7 +28,7 @@ export function Header() {
           <Link
             to="/"
             className="flex items-center gap-2 text-2xl font-bold text-gray-900 hover:opacity-90 transition-opacity"
-          ><img src="/images/S.png" alt="Logo" className="w-12 h-12 rounded-lg" />
+          ><img src="/images/S.webp" alt="Logo" className="w-12 h-12 rounded-lg" />
             <span className="text-blue-600">Shael</span> Systems
           </Link>
 

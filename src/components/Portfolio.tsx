@@ -9,7 +9,7 @@ const projects = [
     title: "Gift Pastries",
     description:
       "Designed and developed a visually-driven e-commerce landing page for a boutique bakery. The site features a categorized product gallery and a specialized ordering system that translates complex custom cake requirements into structured WhatsApp inquiries",
-    image: "images/gift-pastries.png",
+    image: "images/gift-pastries.webp",
     link: "https://gift-pastries.netlify.app",
     tags: ["Landing Page", "Client Inquiry Portal"],
   },
@@ -18,7 +18,7 @@ const projects = [
     title: "Jemmy Glam",
     description:
       "Developed a high-conversion landing page for a beauty service provider, featuring a custom-built lead capture system that bridges the gap between web inquiries and direct client communication via WhatsApp",
-    image: "images/jemmy-glam.png",
+    image: "images/jemmy-glam.webp",
     link: "https://jemmy-glam.vercel.app",
     tags: ["Client Inquiry Portal", "Responsive Design"],
   },
@@ -27,7 +27,7 @@ const projects = [
     title: "Cuttr",
     description:
       "Created a user-friendly dashboard for a link shortening service, allowing users to easily manage and track their shortened URLs with real-time analytics and a clean, intuitive interface",
-    image: "images/cuttr.png",
+    image: "images/cuttr.webp",
     link: "https://cuttr.vercel.app",
     tags: ["Authentication", "CRUD", "Basic Analytics"],
   },
@@ -59,6 +59,7 @@ export function Portfolio() {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                   <Link
                     to={`/case-study/${project.id}`}
