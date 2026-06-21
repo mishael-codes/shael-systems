@@ -4,11 +4,11 @@ import { Card } from "./ui/card";
 
 const testimonials = [
   {
-    name: "Sarah Mitchell",
+    name: "Gift Owayo",
     role: "Owner, Artisan Bakery",
     image:
-      "https://images.unsplash.com/photo-1610387694365-19fafcc86d86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHdvbWFuJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzc2Mzk5OTc3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    text: "Shael Systems built us a beautiful website that doubled our online orders in just 2 months. The team was professional and delivered exactly what we needed.",
+      "images/gift-owayo.jpeg",
+    text: "The website is exceptionally well designed to convert visitors into customers. The WhatsApp ordering feature provides a fast and seamless communication channel, making it especially convenient for customers in Nigeria. Clear calls-to-action, transparent pricing, and an intuitive layout create a smooth user journey that naturally encourages visitors to place an order.",
   },
   {
     name: "Jemimah Fagbemi",
@@ -60,6 +60,7 @@ export function Testimonials() {
                   src={testimonial.image}
                   alt={testimonial.name}
                   className="w-12 h-12 rounded-full object-cover"
+                  loading="lazy"
                 />
                 <div>
                   <p className="font-semibold text-gray-900">{testimonial.name}</p>
