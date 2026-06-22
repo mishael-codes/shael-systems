@@ -1,3 +1,9 @@
+export interface ResultItem {
+  label: string;
+  metric?: string;
+  description: string;
+}
+
 export interface CaseStudyData {
   id: string;
   title: string;
@@ -13,7 +19,7 @@ export interface CaseStudyData {
   challenge: string;
   solution: string;
   features: string[];
-  results: string[];
+  results: ResultItem[];
 }
 
 export const caseStudies: CaseStudyData[] = [
@@ -41,9 +47,21 @@ export const caseStudies: CaseStudyData[] = [
       "Direct Contacts: Quick access to call (07014598383) or Instagram (@giftspastriesandcake)."
     ],
     results: [
-      "Reduced order processing time by 60% by eliminating back-and-forth requirement gathering.",
-      "Increased custom cake inquiries by 40% in the first month.",
-      "Minimized cake customization errors to virtually zero."
+      {
+        label: "Fast Time-to-First-Byte",
+        metric: "764ms",
+        description: "Measured TTFB of 764ms on first load — a fully server-optimised Netlify deployment that serves the page nearly instantly to visitors."
+      },
+      {
+        label: "Fully Mobile-Responsive",
+        metric: "100%",
+        description: "Built mobile-first with a responsive viewport and fluid layouts, ensuring a seamless experience across phones, tablets, and desktops."
+      },
+      {
+        label: "WhatsApp-Powered Inquiry Flow",
+        metric: "6 Touch Points",
+        description: "Six distinct WhatsApp integration points guide visitors from browsing to ordering — eliminating manual back-and-forth and structuring every inquiry automatically."
+      }
     ]
   },
   {
@@ -70,9 +88,19 @@ export const caseStudies: CaseStudyData[] = [
       "Direct CTA: One-tap WhatsApp scheduling and call buttons."
     ],
     results: [
-      "Successfully served 500+ happy clients with automated scheduling.",
-      "Reduced booking overhead by 70%, freeing up hours of manual planning.",
-      "Increased average booking value by highlighting add-ons (nail art, chrome, gems) directly in the pricing system."
+      {
+        label: "Sub-Second Server Response",
+        metric: "727ms",
+        description: "Measured TTFB of 727ms — hosted on Vercel's global edge network, ensuring pages load quickly for clients in Lagos and beyond."
+      },
+      {
+        label: "Zero-Friction Booking Flow",
+        description: "Replaced phone-tag and manual DMs with a structured appointment form that compiles client details and launches a pre-filled WhatsApp message in one tap."
+      },
+      {
+        label: "Modern, Mobile-First UI",
+        description: "Designed for mobile devices from the ground up — where the majority of clients browse. Clean typography, a visual gallery, and an interactive pricing engine make services immediately clear."
+      }
     ]
   },
   {
@@ -100,9 +128,18 @@ export const caseStudies: CaseStudyData[] = [
       "Tiered Subscriptions: Implemented a free tier (up to 5 links, basic analytics) and premium tier ($5/mo for unlimited links, advanced dashboard)."
     ],
     results: [
-      "Sub-100ms link redirection speed.",
-      "High adoption rate for QR code features for offline marketing.",
-      "Highly responsive and mobile-friendly link management dashboard."
+      {
+        label: "Clean, Intuitive Navigation",
+        description: "A clear information hierarchy — Home, Why Cuttr, Pricing, FAQs — lets new users understand the product and take action without confusion or friction."
+      },
+      {
+        label: "Fully Responsive Dashboard",
+        description: "The link management dashboard adapts seamlessly to any screen size, letting users shorten, track, and manage links from a phone or desktop alike."
+      },
+      {
+        label: "Modern SaaS UI",
+        description: "A contemporary dark-accented interface with smooth interactions, clear CTAs, and a tiered pricing model — designed to look and feel like a premium product."
+      }
     ]
   }
 ];

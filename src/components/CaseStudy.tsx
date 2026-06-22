@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
+import type { ResultItem } from "../data/caseStudies";
 import { caseStudies } from "../data/caseStudies";
 import {
   ArrowLeft,
@@ -150,13 +151,18 @@ export function CaseStudy() {
 
             {/* Results / Business Impact */}
             <section className="bg-linear-to-br from-slate-900 to-slate-950 text-white p-8 sm:p-10 rounded-2xl shadow-xl">
-              <h2 className="text-2xl font-bold mb-6">The Results & Impact</h2>
+              <h2 className="text-2xl font-bold mb-2">The Results & Impact</h2>
+              <p className="text-slate-400 text-sm mb-8">Outcomes grounded in real measurements and delivered features.</p>
               <div className="grid gap-6 sm:grid-cols-3">
-                {project.results.map((result, i) => (
-                  <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-xl">
-                    <p className="text-slate-300 text-sm font-medium leading-relaxed">
-                      {result}
-                    </p>
+                {project.results.map((result: ResultItem, i: number) => (
+                  <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-xl flex flex-col gap-2">
+                    {result.metric && (
+                      <span className="text-3xl font-extrabold text-blue-400 tracking-tight leading-none">
+                        {result.metric}
+                      </span>
+                    )}
+                    <p className="text-white font-semibold text-sm">{result.label}</p>
+                    <p className="text-slate-400 text-xs leading-relaxed">{result.description}</p>
                   </div>
                 ))}
               </div>
