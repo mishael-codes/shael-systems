@@ -31,7 +31,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
-                className="text-lg px-8 py-6 bg-blue-600 hover:bg-blue-700"
+                className="text-lg px-8 py-6 bg-blue-600 hover:bg-blue-700 cursor-pointer"
                 onClick={handleGetStarted}
               >
                 Get Started
@@ -40,7 +40,7 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-6 border-2 border-blue-600 text-blue-600 hover:bg-blue-50"
+                className="text-lg px-8 py-6 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 cursor-pointer"
                 onClick={handleWhatsApp}
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
@@ -61,7 +61,6 @@ export function Hero() {
                 preload="metadata"
                 className="w-full h-auto lg:h-[400px] object-cover"
               />
-              {/* <Hero3DMonogram /> */}
             </div>
 
             {/* Decorative elements */}

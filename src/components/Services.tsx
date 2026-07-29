@@ -4,38 +4,41 @@ import { Button } from "./ui/button";
 
 const packages = [
   {
-    name: "Starter",
-    description: "Perfect for small businesses getting online",
+    name: "Booking & Lead Gen Sites",
+    // description: "For businesses ready to scale",
     price: "₦250,000",
     features: [
-      "Simple website (1-3 pages)",
-      "Mobile responsive design",
-      "Contact form integration",
-      "Basic SEO optimization",
-      "1 month support",
-    ],
-  },
-  {
-    name: "Growth",
-    description: "For businesses ready to scale",
-    price: "₦500,000",
-    popular: true,
-    features: [
-      "Conversion-focused landing page",
-      "Lead capture integration",
-      "Analytics setup",
-      "WhatsApp chat integration",
-      "Sales Funnel Design",
-      "Speed optimization",
+      "Online booking and calendar integration",
+      "WhatsApp and email automation",
+      "High-converting sales page",
+      "Contact & lead capture forms",
+      "Google Maps & location embed",
+      "Mobile-responsive design",
+      "Basic SEO setup",
       "3 months support",
     ],
   },
   {
-    name: "Premium",
-    description: "Complete digital transformation",
-    price: "₦1,000,000+",
+    name: "E-Commerce Sites",
+    // description: "Perfect for small businesses getting online",
+    price: "₦500,000",
     features: [
-      "Custom web app features",
+      "Full product catalogue & categories",
+      "Secure checkout & payment integration",
+      "Inventory & stock management",
+      "Order tracking & notifications",
+      "Discount codes & promotions",
+      "Customer accounts & wishlists",
+      "Mobile-responsive storefront",
+      "3 months priority support",
+    ],
+  },
+  {
+    name: "Custom Web Applications",
+    // description: "Complete digital transformation",
+    price: "₦800,000",
+    features: [
+      "Admin portal",
       "User Authentication",
       "Database Integration",
       "Booking or dashboard system",
@@ -73,25 +76,13 @@ export function Services() {
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className={`p-8 relative ${
-                pkg.popular
-                  ? "z-10 overflow-visible border-2 border-blue-600 shadow-xl scale-105 mt-4 md:mt-0"
-                  : "border border-gray-200"
-              }`}
+              className={`p-8 relative border border-gray-200`}
             >
-              {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 z-20 -translate-x-1/2">
-                  <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   {pkg.name}
                 </h3>
-                <p className="text-gray-600 mb-4">{pkg.description}</p>
+                {/* <p className="text-gray-600 mb-4">{pkg.description}</p> */}
                 <div className="text-4xl font-bold text-gray-900">
                   {pkg.price}
                 </div>
@@ -107,15 +98,11 @@ export function Services() {
               </ul>
 
               <Button
-                className={`w-full ${
-                  pkg.popular
-                    ? "bg-blue-600 hover:bg-blue-700"
-                    : "bg-gray-900 hover:bg-gray-800"
-                }`}
+                className={`w-full bg-gray-900 hover:bg-gray-800 cursor-pointer`}
                 size="lg"
                 onClick={() => handleChoosePlan(pkg.name)}
               >
-                Choose Plan
+                Get {pkg.name.split(' ')[0]} Quote
               </Button>
             </Card>
           ))}
