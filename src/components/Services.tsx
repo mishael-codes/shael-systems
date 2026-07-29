@@ -5,47 +5,46 @@ import { Button } from "./ui/button";
 const packages = [
   {
     name: "Booking & Lead Gen Sites",
-    // description: "For businesses ready to scale",
     price: "₦250,000",
     features: [
-      "Online booking and calendar integration",
-      "WhatsApp and email automation",
-      "High-converting sales page",
-      "Contact & lead capture forms",
-      "Google Maps & location embed",
-      "Mobile-responsive design",
-      "Basic SEO setup",
-      "3 months support",
+      "Clients can book appointments without calling you",
+      "Automatic follow-up messages via WhatsApp & email",
+      "A website designed to turn visitors into paying clients",
+      "Capture leads even while you're offline",
+      "Customers can find and locate your business easily",
+      "Looks great on phones, tablets, and desktops",
+      "Shows up when people search for your service on Google",
+      "3 months of support after launch",
     ],
   },
   {
     name: "E-Commerce Sites",
-    // description: "Perfect for small businesses getting online",
     price: "₦500,000",
     features: [
-      "Full product catalogue & categories",
-      "Secure checkout & payment integration",
-      "Inventory & stock management",
-      "Order tracking & notifications",
-      "Discount codes & promotions",
-      "Customer accounts & wishlists",
-      "Mobile-responsive storefront",
-      "3 months priority support",
+      "Showcase all your products in a clean, shoppable store",
+      "Accept payments securely from anywhere in the world",
+      "Know exactly what's in stock without manual counting",
+      "Customers get instant updates on their orders",
+      "Run sales and promos that actually drive purchases",
+      "Shoppers can save favourites and come back to buy",
+      "A store that works perfectly on any device",
+      "3 months of priority support after launch",
     ],
+    popular: true,
   },
   {
     name: "Custom Web Applications",
     // description: "Complete digital transformation",
     price: "₦800,000",
     features: [
-      "Admin portal",
-      "User Authentication",
-      "Database Integration",
-      "Booking or dashboard system",
-      "Full business automation",
-      "Advanced analytics & tracking",
-      "Payment integration",
-      "6 months priority support",
+      "A private dashboard to manage your entire business",
+      "Secure login so only the right people have access",
+      "All your business data stored and organised in one place",
+      "Booking or reporting system built around how you work",
+      "Repetitive tasks handled automatically, saving you hours",
+      "See exactly how your business is performing, in real time",
+      "Get paid directly through your platform",
+      "6 months of priority support after launch",
     ],
   },
 ];
@@ -64,7 +63,7 @@ export function Services() {
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Choose Your Perfect Plan
+            Solutions for all businesses
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Transparent pricing with no hidden fees. All packages include modern
@@ -76,15 +75,14 @@ export function Services() {
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className={`p-8 relative border border-gray-200`}
+              className={`p-8 relative border ${pkg.popular ? "border-blue-600 shadow-lg" : "border-gray-200"}`}
             >
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   {pkg.name}
                 </h3>
-                {/* <p className="text-gray-600 mb-4">{pkg.description}</p> */}
                 <div className="text-4xl font-bold text-gray-900">
-                  {pkg.price}
+                  <span className="text-xs">Starting from</span> <br />{pkg.price}
                 </div>
               </div>
 
@@ -98,14 +96,39 @@ export function Services() {
               </ul>
 
               <Button
-                className={`w-full bg-gray-900 hover:bg-gray-800 cursor-pointer`}
+                className={`w-full cursor-pointer ${pkg.popular ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-900 hover:bg-gray-800"}`}
                 size="lg"
                 onClick={() => handleChoosePlan(pkg.name)}
               >
-                Get {pkg.name.split(' ')[0]} Quote
+                {pkg.name === "Custom Web Applications" ? "Book Discovery Call" : "Get A Quote"}
               </Button>
             </Card>
           ))}
+        </div>
+
+        {/* Custom quote CTA */}
+        <div className="mt-16 text-center bg-gray-50 border border-gray-200 rounded-2xl px-8 py-12">
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">
+            Need something different?
+          </h3>
+          <p className="text-gray-600 max-w-xl mx-auto mb-8">
+            Every business is unique. If your project doesn't fit one of the
+            categories above, we'll create a custom solution tailored to your
+            goals.
+          </p>
+          <Button
+            size="lg"
+            className="bg-blue-600 hover:bg-blue-700 cursor-pointer px-8"
+            onClick={() => {
+              const message = `Hi! I'd like to request a custom quote for my project.`;
+              window.open(
+                `https://wa.me/2348167177172?text=${encodeURIComponent(message)}`,
+                "_blank",
+              );
+            }}
+          >
+            Request a Custom Quote
+          </Button>
         </div>
       </div>
     </section>
