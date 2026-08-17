@@ -5,7 +5,7 @@ import { Card } from "./ui/card";
 const solutions = [
   {
     icon: Target,
-    title: "Conversion-Focused Design",
+    title: "Conversion Focused Design",
     description: "Every element is strategically placed to guide visitors toward taking action and becoming customers.",
   },
   {
@@ -16,7 +16,7 @@ const solutions = [
   {
     icon: Smartphone,
     title: "Mobile Optimization",
-    description: "Flawless experience across all devices—desktop, tablet, and mobile—for maximum reach.",
+    description: "Flawless experience across all devices including desktop, tablet, and mobile for maximum reach.",
   },
   {
     icon: CheckCircle2,
@@ -27,37 +27,43 @@ const solutions = [
 
 export function Solution() {
   return (
-    <section className="py-20 px-6 bg-linear-to-b from-white to-blue-50">
+    <section className="section-shell bg-blue-950 px-6 py-24 text-white">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            We Build Websites That Work
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our proven approach focuses on what matters most: results for your business
-          </p>
-        </div>
+        <div className="grid items-start gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
+          <div className="order-2 grid gap-4 sm:grid-cols-2 lg:order-1">
+            {solutions.map((solution, index) => {
+              const Icon = solution.icon;
+              return (
+                <Card
+                  key={index}
+                  className="group flex min-h-64 flex-col justify-between border-blue-900 bg-blue-900/60 p-6 text-white transition-all hover:-translate-y-1 hover:border-blue-700 hover:bg-blue-900"
+                >
+                  <div className="flex items-start justify-between">
+                    <span className="font-mono text-xs text-blue-300">0{index + 1}</span>
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-600 text-white transition-transform group-hover:rotate-6">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="mb-3 text-lg font-semibold text-white">{solution.title}</h3>
+                    <p className="text-sm leading-relaxed text-blue-100">{solution.description}</p>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-5">
-          {solutions.map((solution, index) => {
-            const Icon = solution.icon;
-            return (
-              <Card
-                key={index}
-                className="p-8 flex flex-col items-center justify-center text-center hover:shadow-xl transition-all hover:-translate-y-1"
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white mb-6">
-                  <Icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {solution.description}
-                </p>
-              </Card>
-            );
-          })}
+          <div className="order-1 max-w-xl lg:order-2 lg:sticky lg:top-28">
+            <p className="mb-5 font-mono text-xs uppercase tracking-[0.24em] text-blue-300">
+              Built with intention
+            </p>
+            <h2 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl">
+              We build digital products with a job to do
+            </h2>
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-blue-100">
+              Our approach balances strategy, craft, and the practical details that make a product useful every day
+            </p>
+          </div>
         </div>
         {/* <ImageWithFallback
           src="/images/results.png"

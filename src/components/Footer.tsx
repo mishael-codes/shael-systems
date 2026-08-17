@@ -11,7 +11,7 @@ export function Footer() {
           <div>
             <h3 className="text-2xl font-bold text-white mb-4">Shael Systems</h3>
             <p className="text-gray-400 mb-4">
-              Building high-converting websites that help businesses grow online.
+              Building thoughtful digital products that help businesses grow with confidence.
             </p>
           </div>
 

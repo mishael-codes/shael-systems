@@ -19,16 +19,26 @@ function ScrollToHashElement() {
   useEffect(() => {
     if (hash) {
       const element = document.getElementById(hash.substring(1));
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      }
+      if (element) setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 100);
     } else if (pathname === "/") {
-      // Only scroll to top on home page load if there is no hash
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [hash, pathname]);
+
+  useEffect(() => {
+    const items = document.querySelectorAll<HTMLElement>(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      }),
+      { threshold: 0.12 },
+    );
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, [pathname]);
 
   return null;
 }
@@ -37,27 +47,21 @@ function Home() {
   return (
     <>
       <Hero />
-      <Testimonials />
-      <Problem />
-      <Solution />
-      <div id="services">
-        <Services />
-      </div>
-      <div id="portfolio">
-        <Portfolio />
-      </div>
-      <div id="process">
-        <Process />
-      </div>
-      <FAQ />
-      <ContactCTA />
+      <div className="reveal"><Testimonials /></div>
+      <div className="reveal reveal-delay-1"><Problem /></div>
+      <div className="reveal"><Solution /></div>
+      <div id="services" className="reveal"><Services /></div>
+      <div id="portfolio" className="reveal reveal-delay-1"><Portfolio /></div>
+      <div id="process" className="reveal"><Process /></div>
+      <div className="reveal"><FAQ /></div>
+      <div className="reveal"><ContactCTA /></div>
     </>
   );
 }
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
       <ScrollToHashElement />
       <main>

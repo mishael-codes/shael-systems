@@ -287,7 +287,7 @@ export function ContactCTA() {
   return (
     <section
       id="contact"
-      className="py-20 px-6 bg-linear-to-b from-blue-600 to-blue-800 text-white"
+      className="section-shell py-24 px-6 bg-linear-to-b from-blue-600 to-blue-800 text-white"
     >
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
@@ -295,7 +295,7 @@ export function ContactCTA() {
             Ready to Grow Your Business Online?
           </h2>
           <p className="text-lg text-blue-100 max-w-2xl mx-auto">
-            Let's build a website that brings you customers. Get in touch today
+            Let's create a digital experience that makes your next move easier. Get in touch today
             for a free consultation.
           </p>
         </div>
