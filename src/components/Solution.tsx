@@ -5,7 +5,7 @@ import { Card } from "./ui/card";
 const solutions = [
   {
     icon: Target,
-    title: "Conversion-Focused Design",
+    title: "Conversion Focused Design",
     description: "Every element is strategically placed to guide visitors toward taking action and becoming customers.",
   },
   {
@@ -16,7 +16,7 @@ const solutions = [
   {
     icon: Smartphone,
     title: "Mobile Optimization",
-    description: "Flawless experience across all devices—desktop, tablet, and mobile—for maximum reach.",
+    description: "Flawless experience across all devices including desktop, tablet, and mobile for maximum reach.",
   },
   {
     icon: CheckCircle2,

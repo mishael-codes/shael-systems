@@ -11,7 +11,7 @@ const steps = [
     icon: Palette,
     number: "02",
     title: "Design",
-    description: "We craft a beautiful, conversion-focused layout tailored to your brand.",
+    description: "We craft a beautiful, conversion focused layout tailored to your brand.",
   },
   {
     icon: Code,
@@ -36,7 +36,7 @@ export function Process() {
             Our Simple Process
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            From concept to launch, we make building your website easy and stress-free
+            From concept to launch, we make building your website easy and stress free
           </p>
         </div>
 

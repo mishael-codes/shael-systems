@@ -22,7 +22,7 @@ const testimonials = [
     role: "CEO, FitLife Studio",
     image:
       "https://images.unsplash.com/photo-1553484771-6e117b648d45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbnRyZXByZW5ldXIlMjBzdGFydHVwJTIwZm91bmRlcnxlbnwxfHx8fDE3NzY0MDExMjF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    text: "Our new website is fast, mobile-friendly, and actually brings in customers. The booking system they integrated has transformed how we manage our business.",
+    text: "Our new website is fast, mobile friendly, and actually brings in customers. The booking system they integrated has transformed how we manage our business.",
   },
 ];
 
