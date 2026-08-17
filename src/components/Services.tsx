@@ -59,15 +59,14 @@ export function Services() {
   };
 
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="section-shell py-24 px-6 bg-white">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Solutions for all businesses
+            The right digital system for the next stage of your business
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Transparent pricing with no hidden fees. All packages include modern
-            design and clean code.
+            From focused marketing sites to full business platforms, we shape the scope around what your team and customers actually need.
           </p>
         </div>
 

@@ -29,14 +29,14 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="section-shell py-24 px-6 bg-white">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Our Simple Process
+            A clear path from idea to impact
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            From concept to launch, we make building your website easy and stress free
+            From the first conversation to launch, we make complex digital work feel clear and considered
           </p>
         </div>
 

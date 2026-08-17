@@ -199,3 +199,43 @@
     transform: rotateX(360deg) rotateY(-12deg);
   }
 }
+
+.section-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-shell > div {
+  position: relative;
+  z-index: 1;
+}
+
+.section-shell h2 {
+  letter-spacing: -0.04em;
+}
+
+.section-shell .rounded-xl,
+.section-shell .rounded-2xl {
+  border-radius: 1rem;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+}
+
+.section-shell .rounded-xl:hover,
+.section-shell .rounded-2xl:hover {
+  box-shadow: 0 24px 70px rgba(37, 99, 235, 0.12);
+}
+
+@media (max-width: 640px) {
+  .section-shell {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-shell * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

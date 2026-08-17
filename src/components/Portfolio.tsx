@@ -8,19 +8,19 @@ const projects = [
     id: "gift-pastries",
     title: "Gift Pastries",
     description:
-      "Designed and developed a visually-driven e-commerce landing page for a boutique bakery. The site features a categorized product gallery and a specialized ordering system that translates complex custom cake requirements into structured WhatsApp inquiries",
+      "Designed and developed a shoppable ecommerce experience for a boutique bakery, with a categorized product gallery and an ordering system that turns detailed cake requests into structured WhatsApp inquiries",
     image: "images/gift-pastries.webp",
     link: "https://gift-pastries.netlify.app",
-    tags: ["Landing Page", "Client Inquiry Portal"],
+    tags: ["Commerce", "Inquiry system"],
   },
   {
     id: "jemmy-glam",
     title: "Jemmy Glam",
     description:
-      "Developed a high-conversion landing page for a beauty service provider, featuring a custom-built lead capture system that bridges the gap between web inquiries and direct client communication via WhatsApp",
+      "Developed a service business experience for a beauty provider, with a focused lead capture system that connects web inquiries to direct client communication through WhatsApp",
     image: "images/jemmy-glam.webp",
     link: "https://jemmy-glam.vercel.app",
-    tags: ["Client Inquiry Portal", "Responsive Design"],
+    tags: ["Service business", "Lead capture"],
   },
   {
     id: "cuttr",
@@ -35,15 +35,14 @@ const projects = [
 
 export function Portfolio() {
   return (
-    <section className="py-20 px-6 bg-gray-50">
+    <section className="section-shell py-24 px-6 bg-gray-50">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Our Recent Work
+            Selected work across screens and systems
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Real results for real businesses. See how we've helped others
-            succeed.
+            A look at how we turn business ideas into useful, credible digital experiences.
           </p>
         </div>
 

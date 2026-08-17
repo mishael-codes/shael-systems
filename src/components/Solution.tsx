@@ -27,14 +27,14 @@ const solutions = [
 
 export function Solution() {
   return (
-    <section className="py-20 px-6 bg-linear-to-b from-white to-blue-50">
+    <section className="section-shell py-24 px-6 bg-linear-to-b from-white to-blue-50">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            We Build Websites That Work
+            We build digital products with a job to do
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our proven approach focuses on what matters most: results for your business
+            Our approach balances strategy, craft, and the practical details that make a product useful every day
           </p>
         </div>
 

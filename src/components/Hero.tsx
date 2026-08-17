@@ -10,8 +10,8 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.02fr_.98fr] lg:gap-20">
         <div className="reveal is-visible text-center lg:text-left">
           <p className="mb-6 text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">Digital experiences for ambitious businesses</p>
-          <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] text-slate-950 sm:text-7xl lg:text-[5.7rem]">Make your next website your best salesperson.</h1>
-          <p className="mx-auto mt-8 max-w-xl text-lg leading-8 text-slate-600 lg:mx-0">Shael Systems turns your expertise into a clear, credible and high converting digital experience that moves people to act.</p>
+          <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] text-slate-950 sm:text-7xl lg:text-[5.7rem]">Build the digital product your business is ready for.</h1>
+          <p className="mx-auto mt-8 max-w-xl text-lg leading-8 text-slate-600 lg:mx-0">Shael Systems creates clear, credible digital experiences for the way your business works, from ecommerce stores and booking sites to SaaS dashboards and custom platforms.</p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
             <Button size="lg" className="h-14 rounded-lg bg-blue-600 px-7 text-base hover:bg-blue-700" onClick={handleGetStarted}>Start a project <ArrowUpRight data-icon="inline-end" /></Button>
             <Button size="lg" variant="outline" className="h-14 rounded-lg border-blue-200 px-7 text-base text-blue-700 hover:bg-blue-50" onClick={handleWhatsApp}><MessageCircle data-icon="inline-start" /> Talk with us</Button>

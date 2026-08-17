@@ -7,7 +7,7 @@ const problems = [
   },
   {
     title: "Poor Mobile Experience",
-    description: "Your site looks broken or hard to use on phones and tablets",
+    description: "Your customer experience breaks down across phones, tablets, and desktops",
   },
   {
     title: "Slow Loading Speed",
@@ -21,11 +21,11 @@ const problems = [
 
 export function Problem() {
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="section-shell py-24 px-6 bg-white">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Most Business Websites Don't Bring Results
+            Digital products should move your business forward
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Are you struggling with any of these common issues?
