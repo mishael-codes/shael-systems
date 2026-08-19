@@ -4,47 +4,42 @@ import { Button } from "./ui/button";
 
 const packages = [
   {
-    name: "Booking & Lead Gen Sites",
-    price: "₦250,000",
+    name: "Booking and Appointment Sites",
+    price: "$999.99",
     features: [
       "Clients can book appointments without calling you",
-      "Automatic follow-up messages via WhatsApp & email",
-      "A website designed to turn visitors into paying clients",
-      "Capture leads even while you're offline",
-      "Customers can find and locate your business easily",
-      "Looks great on phones, tablets, and desktops",
-      "Shows up when people search for your service on Google",
-      "3 months of support after launch",
+      "Customers can quickly find your business details and contact information",
+      "Your site feels professional and easy to use on every device",
+      "A smooth experience for visitors on phones, tablets, and desktops",
+      "Three months of support after launch",
     ],
   },
   {
-    name: "E-Commerce Sites",
-    price: "₦500,000",
+    name: "E-Commerce Websites",
+    price: "$2,499.99",
     features: [
-      "Showcase all your products in a clean, shoppable store",
-      "Accept payments securely from anywhere in the world",
-      "Know exactly what's in stock without manual counting",
-      "Customers get instant updates on their orders",
-      "Run sales and promos that actually drive purchases",
-      "Shoppers can save favourites and come back to buy",
-      "A store that works perfectly on any device",
-      "3 months of priority support after launch",
+      "Display your products in a clean, easy to browse store",
+      "Accept payments securely from customers anywhere in the world",
+      "Keep track of stock and orders without manual hassle",
+      "Customers receive updates on their purchases with ease",
+      "Create a shopping experience that feels simple and professional",
+      "A store that works smoothly on any device",
+      "Three months of priority support after launch",
     ],
     popular: true,
   },
   {
-    name: "Custom Web Applications",
+    name: "Custom Web Development",
     // description: "Complete digital transformation",
-    price: "₦800,000",
+    price: "$4,999.99",
     features: [
-      "A private dashboard to manage your entire business",
-      "Secure login so only the right people have access",
-      "All your business data stored and organised in one place",
-      "Booking or reporting system built around how you work",
-      "Repetitive tasks handled automatically, saving you hours",
-      "See exactly how your business is performing, in real time",
-      "Get paid directly through your platform",
-      "6 months of priority support after launch",
+      "A private dashboard to manage your business operations",
+      "Secure access for only the right people",
+      "Keep your business data organised in one place",
+      "Automate repetitive tasks and save valuable time",
+      "Track your performance with clear insights and analytics",
+      "Accept payments directly through your platform",
+      "Six months of priority support after launch",
     ],
   },
 ];
@@ -59,14 +54,15 @@ export function Services() {
   };
 
   return (
-    <section className="section-shell py-24 px-6 bg-white">
+    <section className="py-20 px-6 bg-white">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            The right digital system for the next stage of your business
+            Web solutions for businesses of every kind
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            From focused marketing sites to full business platforms, we shape the scope around what your team and customers actually need.
+            Transparent pricing with no hidden fees. Every package includes modern
+            design, clean code, and a user friendly experience.
           </p>
         </div>
 
@@ -99,7 +95,7 @@ export function Services() {
                 size="lg"
                 onClick={() => handleChoosePlan(pkg.name)}
               >
-                {pkg.name === "Custom Web Applications" ? "Book Discovery Call" : "Get A Quote"}
+                {pkg.name === "Custom Web Development" ? "Book Discovery Call" : "Get A Quote"}
               </Button>
             </Card>
           ))}
