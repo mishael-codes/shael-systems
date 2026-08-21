@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
@@ -5,7 +8,7 @@ import { Button } from "./ui/button";
 const packages = [
   {
     name: "Booking and Appointment Sites",
-    price: "$999.99",
+    price: 999.99,
     features: [
       "Clients can book appointments without calling you",
       "Customers can quickly find your business details and contact information",
@@ -16,7 +19,7 @@ const packages = [
   },
   {
     name: "E-Commerce Websites",
-    price: "$2,499.99",
+    price: 2499.99,
     features: [
       "Display your products in a clean, easy to browse store",
       "Accept payments securely from customers anywhere in the world",
@@ -31,7 +34,7 @@ const packages = [
   {
     name: "Custom Web Development",
     // description: "Complete digital transformation",
-    price: "$4,999.99",
+    price: 4999.99,
     features: [
       "A private dashboard to manage your business operations",
       "Secure access for only the right people",
@@ -44,7 +47,48 @@ const packages = [
   },
 ];
 
+const NGN_PER_USD = 1500;
+
+function isNigeria(latitude: number, longitude: number) {
+  return latitude >= 4.2 && latitude <= 13.9 && longitude >= 2.6 && longitude <= 14.7;
+}
+
 export function Services() {
+  const [isNigeriaVisitor, setIsNigeriaVisitor] = useState(false);
+  const [locationStatus, setLocationStatus] = useState<"asking" | "detected" | "unavailable">("asking");
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      setLocationStatus("unavailable");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        setIsNigeriaVisitor(isNigeria(coords.latitude, coords.longitude));
+        setLocationStatus("detected");
+      },
+      () => setLocationStatus("unavailable"),
+      { enableHighAccuracy: false, timeout: 8000, maximumAge: 3600000 },
+    );
+  }, []);
+
+  const formatPrice = (price: number) => {
+    if (isNigeriaVisitor) {
+      return new Intl.NumberFormat("en-NG", {
+        style: "currency",
+        currency: "NGN",
+        maximumFractionDigits: 0,
+      }).format(price * NGN_PER_USD);
+    }
+
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+    }).format(price);
+  };
+
   const handleChoosePlan = (planName: string) => {
     const message = `Hi! I'm interested in the ${planName} package.`;
     window.open(
@@ -64,6 +108,13 @@ export function Services() {
             Transparent pricing with no hidden fees. Every package includes modern
             design, clean code, and a user friendly experience.
           </p>
+          <p className="mx-auto mt-5 max-w-xl text-sm text-gray-500" role="status">
+            {locationStatus === "asking"
+              ? "We are asking for your location so we can show the most relevant currency. Prices start in USD by default."
+              : isNigeriaVisitor
+                ? "Location detected as Nigeria. Prices are shown in Naira."
+                : "Prices are shown in USD. Your location was not used to change the currency."}
+          </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -77,7 +128,7 @@ export function Services() {
                   {pkg.name}
                 </h3>
                 <div className="text-4xl font-bold text-gray-900">
-                  <span className="text-xs">Starting from</span> <br />{pkg.price}
+                  <span className="text-xs">Starting from</span> <br />{formatPrice(pkg.price)}
                 </div>
               </div>
 
