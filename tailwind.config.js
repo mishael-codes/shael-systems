@@ -67,6 +67,8 @@ export default {
       animation: {
         spinX: "spinX 8s linear infinite",
         spinY: "spinY 6s linear infinite",
+        "accordion-down": "accordion-down 260ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "accordion-up": "accordion-up 220ms cubic-bezier(0.4, 0, 1, 1)",
       },
       keyframes: {
         spinX: {
@@ -76,6 +78,14 @@ export default {
         spinY: {
           "0%": { transform: "rotateY(0deg)" },
           "100%": { transform: "rotateY(360deg)" },
+        },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
     },
