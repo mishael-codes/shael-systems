@@ -9,6 +9,7 @@ const packages = [
   {
     name: "Booking and Appointment Sites",
     price: 999.99,
+    ngnPrice: 300000,
     features: [
       "Clients can book appointments without calling you",
       "Customers can quickly find your business details and contact information",
@@ -20,6 +21,7 @@ const packages = [
   {
     name: "E-Commerce Websites",
     price: 2499.99,
+    ngnPrice: 550000,
     features: [
       "Display your products in a clean, easy to browse store",
       "Accept payments securely from customers anywhere in the world",
@@ -35,6 +37,7 @@ const packages = [
     name: "Custom Web Development",
     // description: "Complete digital transformation",
     price: 4999.99,
+    ngnPrice: 1000000,
     features: [
       "A private dashboard to manage your business operations",
       "Secure access for only the right people",
@@ -46,8 +49,6 @@ const packages = [
     ],
   },
 ];
-
-const NGN_PER_USD = 1500;
 
 function isNigeria(latitude: number, longitude: number) {
   return latitude >= 4.2 && latitude <= 13.9 && longitude >= 2.6 && longitude <= 14.7;
@@ -73,13 +74,13 @@ export function Services() {
     );
   }, []);
 
-  const formatPrice = (price: number) => {
+  const formatPrice = (price: number, ngnPrice: number) => {
     if (isNigeriaVisitor) {
       return new Intl.NumberFormat("en-NG", {
         style: "currency",
         currency: "NGN",
         maximumFractionDigits: 0,
-      }).format(price * NGN_PER_USD);
+      }).format(ngnPrice);
     }
 
     return new Intl.NumberFormat("en-US", {
@@ -128,7 +129,7 @@ export function Services() {
                   {pkg.name}
                 </h3>
                 <div className="text-4xl font-bold text-gray-900">
-                  <span className="text-xs">Starting from</span> <br />{formatPrice(pkg.price)}
+                  <span className="text-xs">Starting from</span> <br />{formatPrice(pkg.price, pkg.ngnPrice)}
                 </div>
               </div>
 
