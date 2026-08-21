@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     question: "How much does a website cost?",
-    answer: "Our packages start at ₦150,000 for a simple website and go up to ₦750,000+ for custom web applications. The exact price depends on your specific needs, features, and complexity. We offer transparent pricing with no hidden fees.",
+    answer: "Our prices start in USD by default. Booking and appointment sites start from $999.99, ecommerce websites from $2,499.99, and custom web development from $4,999.99. If you are in Nigeria, we ask for your location with your permission and show local pricing of ₦300,000, ₦550,000, and ₦1,000,000 respectively. If location access is declined or unavailable, prices remain in USD. The exact quote depends on your needs, features, and complexity, with no hidden fees.",
   },
   {
     question: "How long does it take to build a website?",

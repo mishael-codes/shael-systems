@@ -118,7 +118,7 @@ export function ContactCTA() {
               <h3 className="text-2xl font-semibold">Send us a message</h3>
             </div>
 
-            <form onSubmit={submitHandler} noValidate className="space-y-4">
+            <form method="POST" onSubmit={submitHandler} noValidate className="space-y-4">
               <div>
                 <Input type="text" placeholder="Your Name" {...register("name")} className="w-full" />
                 {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
