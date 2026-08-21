@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -8,7 +11,7 @@ import {
 const faqs = [
   {
     question: "How much does a website cost?",
-    answer: "Our packages start at ₦150,000 for a simple website and go up to ₦750,000+ for custom web applications. The exact price depends on your specific needs, features, and complexity. We offer transparent pricing with no hidden fees.",
+    answer: "",
   },
   {
     question: "How long does it take to build a website?",
@@ -32,7 +35,31 @@ const faqs = [
   },
 ];
 
+function isNigeria(latitude: number, longitude: number) {
+  return latitude >= 4.2 && latitude <= 13.9 && longitude >= 2.6 && longitude <= 14.7;
+}
+
+function getPricingAnswer(isNigeriaVisitor: boolean) {
+  if (isNigeriaVisitor) {
+    return "Our prices start from ₦300,000 for booking and appointment sites, ₦550,000 for ecommerce websites, and ₦1,000,000 for custom web development. The exact quote depends on your needs, features, and complexity, with no hidden fees.";
+  }
+
+  return "Our prices start from $999.99 for booking and appointment sites, $2,499.99 for ecommerce websites, and $4,999.99 for custom web development. Prices are shown in USD by default. The exact quote depends on your needs, features, and complexity, with no hidden fees.";
+}
+
 export function FAQ() {
+  const [isNigeriaVisitor, setIsNigeriaVisitor] = useState(false);
+
+  useEffect(() => {
+    if (!navigator.geolocation) return;
+
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => setIsNigeriaVisitor(isNigeria(coords.latitude, coords.longitude)),
+      () => undefined,
+      { enableHighAccuracy: false, timeout: 8000, maximumAge: 3600000 },
+    );
+  }, []);
+
   return (
     <section className="py-20 px-6 bg-gray-50">
       <div className="mx-auto max-w-3xl">
@@ -56,7 +83,9 @@ export function FAQ() {
                 <span className="font-semibold text-gray-900">{faq.question}</span>
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
-                {faq.answer}
+                {faq.question === "How much does a website cost?"
+                  ? getPricingAnswer(isNigeriaVisitor)
+                  : faq.answer}
               </AccordionContent>
             </AccordionItem>
           ))}
