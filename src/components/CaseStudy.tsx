@@ -23,6 +23,79 @@ export function CaseStudy() {
     window.scrollTo(0, 0);
   }, [id]);
 
+  // Inject per-page SEO tags
+  useEffect(() => {
+    if (!project) return;
+
+    const BASE_URL = "https://shaelsystems.com";
+    const url = `${BASE_URL}/case-study/${project.id}`;
+    const title = `${project.title} Case Study | Shael Systems`;
+    const description = project.subtitle;
+    const image = `${BASE_URL}${project.image}`;
+
+    // --- helpers ---
+    const setMeta = (sel: string, attr: string, value: string) => {
+      let el = document.querySelector<HTMLMetaElement>(sel);
+      const created = !el;
+      if (!el) {
+        el = document.createElement("meta");
+        document.head.appendChild(el);
+      }
+      el.setAttribute(attr, value);
+      return created ? el : null; // null means it already existed (restore later)
+    };
+
+    const setLink = (rel: string, href: string) => {
+      let el = document.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+      const prev = el?.href ?? null;
+      if (!el) {
+        el = document.createElement("link");
+        el.rel = rel;
+        document.head.appendChild(el);
+      }
+      el.href = href;
+      return prev;
+    };
+
+    // --- capture originals ---
+    const prevTitle = document.title;
+    const prevDesc = document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "";
+    const prevOgTitle = document.querySelector('meta[property="og:title"]')?.getAttribute("content") ?? "";
+    const prevOgDesc = document.querySelector('meta[property="og:description"]')?.getAttribute("content") ?? "";
+    const prevOgUrl = document.querySelector('meta[property="og:url"]')?.getAttribute("content") ?? "";
+    const prevOgImage = document.querySelector('meta[property="og:image"]')?.getAttribute("content") ?? "";
+    const prevTwTitle = document.querySelector('meta[name="twitter:title"]')?.getAttribute("content") ?? "";
+    const prevTwDesc = document.querySelector('meta[name="twitter:description"]')?.getAttribute("content") ?? "";
+    const prevTwImage = document.querySelector('meta[name="twitter:image"]')?.getAttribute("content") ?? "";
+    const prevCanonical = document.querySelector('link[rel="canonical"]')?.getAttribute("href") ?? "";
+
+    // --- apply ---
+    document.title = title;
+    setMeta('meta[name="description"]', "content", description);
+    setMeta('meta[property="og:title"]', "content", title);
+    setMeta('meta[property="og:description"]', "content", description);
+    setMeta('meta[property="og:url"]', "content", url);
+    setMeta('meta[property="og:image"]', "content", image);
+    setMeta('meta[name="twitter:title"]', "content", title);
+    setMeta('meta[name="twitter:description"]', "content", description);
+    setMeta('meta[name="twitter:image"]', "content", image);
+    setLink("canonical", url);
+
+    // --- restore on unmount ---
+    return () => {
+      document.title = prevTitle;
+      document.querySelector('meta[name="description"]')?.setAttribute("content", prevDesc);
+      document.querySelector('meta[property="og:title"]')?.setAttribute("content", prevOgTitle);
+      document.querySelector('meta[property="og:description"]')?.setAttribute("content", prevOgDesc);
+      document.querySelector('meta[property="og:url"]')?.setAttribute("content", prevOgUrl);
+      document.querySelector('meta[property="og:image"]')?.setAttribute("content", prevOgImage);
+      document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", prevTwTitle);
+      document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", prevTwDesc);
+      document.querySelector('meta[name="twitter:image"]')?.setAttribute("content", prevTwImage);
+      setLink("canonical", prevCanonical);
+    };
+  }, [project]);
+
   if (!project) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-6 py-12">

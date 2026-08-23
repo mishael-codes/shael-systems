@@ -12,6 +12,7 @@ import { FAQ } from "./components/FAQ";
 import { ContactCTA } from "./components/ContactCTA";
 import { Footer } from "./components/Footer";
 import { CaseStudy } from "./components/CaseStudy";
+import { NotFound } from "./components/NotFound";
 
 function ScrollToHashElement() {
   const { hash, pathname } = useLocation();
@@ -68,6 +69,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/case-study/:id" element={<CaseStudy />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
