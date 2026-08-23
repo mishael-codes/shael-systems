@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 const packages = [
   {
     name: "Booking and Appointment Sites",
-    price: 999.99,
+    price: 1500,
     ngnPrice: 300000,
     features: [
       "Clients can book appointments without calling you",
@@ -20,7 +20,7 @@ const packages = [
   },
   {
     name: "E-Commerce Websites",
-    price: 2499.99,
+    price: 5000,
     ngnPrice: 550000,
     features: [
       "Display your products in a clean, easy to browse store",
@@ -36,7 +36,7 @@ const packages = [
   {
     name: "Custom Web Development",
     // description: "Complete digital transformation",
-    price: 4999.99,
+    price: 8000,
     ngnPrice: 1000000,
     features: [
       "A private dashboard to manage your business operations",
@@ -56,11 +56,12 @@ function isNigeria(latitude: number, longitude: number) {
 
 export function Services() {
   const [isNigeriaVisitor, setIsNigeriaVisitor] = useState(false);
-  const [locationStatus, setLocationStatus] = useState<"asking" | "detected" | "unavailable">("asking");
+  const [, setLocationStatus] = useState<"asking" | "detected" | "unavailable">(
+    () => (typeof navigator !== "undefined" && !navigator.geolocation ? "unavailable" : "asking"),
+  );
 
   useEffect(() => {
     if (!navigator.geolocation) {
-      setLocationStatus("unavailable");
       return;
     }
 
@@ -108,13 +109,6 @@ export function Services() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Transparent pricing with no hidden fees. Every package includes modern
             design, clean code, and a user friendly experience.
-          </p>
-          <p className="mx-auto mt-5 max-w-xl text-sm text-gray-500" role="status">
-            {locationStatus === "asking"
-              ? "We are asking for your location so we can show the most relevant currency. Prices start in USD by default."
-              : isNigeriaVisitor
-                ? "Location detected as Nigeria. Prices are shown in Naira."
-                : "Prices are shown in USD. Your location was not used to change the currency."}
           </p>
         </div>
 
