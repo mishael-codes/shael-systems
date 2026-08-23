@@ -1,0 +1,12 @@
+# robots.txt — Shael Systems (https://shaelsystems.com)
+# Allow all well-behaved crawlers to index the full site.
+
+User-agent: *
+Allow: /
+
+# Point search engines to the sitemap
+Sitemap: https://shaelsystems.com/sitemap.xml
+
+# Point AI agents to the LLM-friendly content map
+# (supported by a growing number of AI crawlers)
+X-Robots-Tag: llms.txt

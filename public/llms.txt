@@ -1,0 +1,32 @@
+# Shael Systems
+
+> Shael Systems is a web development studio run by Mishael Enyi that builds
+> clear, credible digital products for growing businesses — including e-commerce
+> stores, booking & appointment platforms, and custom web applications.
+> Transparent pricing, clean code, and a user-friendly experience on every device.
+
+## Services
+
+Shael Systems offers three core service packages:
+
+- **Booking & Appointment Sites** — Clients can book appointments without calling; includes three months of post-launch support. Starting from $1,500 / ₦300,000.
+- **E-Commerce Websites** — Full online stores with payment processing, inventory management, and order notifications. Starting from $5,000 / ₦550,000.
+- **Custom Web Development** — Bespoke dashboards, portals, and web applications with secure access control, analytics, and payment integration. Starting from $8,000 / ₦1,000,000.
+
+All packages include modern design, clean code, mobile-responsive layouts, and post-launch support.
+
+## Portfolio / Case Studies
+
+- [Gift Pastries Case Study](https://shaelsystems.com/case-study/gift-pastries) — Booking & lead-gen site for a pastry business.
+- [Jemmy Glam Case Study](https://shaelsystems.com/case-study/jemmy-glam) — E-commerce and appointment site for a beauty brand.
+- [Cuttr Case Study](https://shaelsystems.com/case-study/cuttr) — Custom web application for a service business.
+
+## Contact
+
+- WhatsApp: https://wa.me/2348167177172
+- Website: https://shaelsystems.com
+
+## Optional: Full content
+
+- [Homepage](https://shaelsystems.com/)
+- [Sitemap](https://shaelsystems.com/sitemap.xml)
