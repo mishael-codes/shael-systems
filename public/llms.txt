@@ -17,16 +17,16 @@ All packages include modern design, clean code, mobile-responsive layouts, and p
 
 ## Portfolio / Case Studies
 
-- [Gift Pastries Case Study](https://www.shaelsystems.com/case-study/gift-pastries) — Booking & lead-gen site for a pastry business.
-- [Jemmy Glam Case Study](https://www.shaelsystems.com/case-study/jemmy-glam) — E-commerce and appointment site for a beauty brand.
-- [Cuttr Case Study](https://www.shaelsystems.com/case-study/cuttr) — Custom web application for a service business.
+- [Gift Pastries Case Study](https://shaelsystems.com/case-study/gift-pastries) — Booking & lead-gen site for a pastry business.
+- [Jemmy Glam Case Study](https://shaelsystems.com/case-study/jemmy-glam) — E-commerce and appointment site for a beauty brand.
+- [Cuttr Case Study](https://shaelsystems.com/case-study/cuttr) — Custom web application for a service business.
 
 ## Contact
 
 - WhatsApp: https://wa.me/2348067575432
-- Website: https://www.shaelsystems.com
+- Website: https://shaelsystems.com
 
 ## Optional: Full content
 
-- [Homepage](https://www.shaelsystems.com/)
-- [Sitemap](https://www.shaelsystems.com/sitemap.xml)
+- [Homepage](https://shaelsystems.com/)
+- [Sitemap](https://shaelsystems.com/sitemap.xml)
