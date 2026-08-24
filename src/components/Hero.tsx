@@ -17,7 +17,7 @@ export function Hero() {
             <Button size="lg" variant="outline" className="h-14 rounded-lg border-blue-200 px-7 text-base text-blue-700 hover:bg-blue-50" onClick={handleWhatsApp}><MessageCircle data-icon="inline-start" /> Talk with us</Button>
           </div>
           <div className="mt-12 grid grid-cols-3 border-y border-slate-200 py-5 text-left">
-            <div><p className="text-2xl font-semibold text-slate-950">40+</p><p className="mt-1 text-xs uppercase tracking-wide text-slate-500">Projects shipped</p></div>
+            <div><p className="text-2xl font-semibold text-slate-950">4+</p><p className="mt-1 text-xs uppercase tracking-wide text-slate-500">Projects shipped</p></div>
             <div className="border-l border-slate-200 pl-4"><p className="text-2xl font-semibold text-slate-950">3x</p><p className="mt-1 text-xs uppercase tracking-wide text-slate-500">More clarity</p></div>
             <div className="border-l border-slate-200 pl-4"><p className="text-2xl font-semibold text-slate-950">4.9</p><p className="mt-1 text-xs uppercase tracking-wide text-slate-500">Client rating</p></div>
           </div>

@@ -3,7 +3,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://shaelsystems.com/</loc>
+    <loc>https://www.shaelsystems.com/</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -11,21 +11,21 @@
 
   <!-- Case Studies -->
   <url>
-    <loc>https://shaelsystems.com/case-study/gift-pastries</loc>
+    <loc>https://www.shaelsystems.com/case-study/gift-pastries</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://shaelsystems.com/case-study/jemmy-glam</loc>
+    <loc>https://www.shaelsystems.com/case-study/jemmy-glam</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://shaelsystems.com/case-study/cuttr</loc>
+    <loc>https://www.shaelsystems.com/case-study/cuttr</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
