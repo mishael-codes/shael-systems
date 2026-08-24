@@ -1,4 +1,5 @@
 import { Mail, Phone } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -63,7 +64,15 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            {/* <h4 className="font-semibold text-white mb-4">Follow Us</h4>
+            <h4 className="font-semibold text-white mb-4">Follow Us</h4>
+            <a
+              href="https://linkedin.com/company/shaelsystems"
+              className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin className="w-5 h-5" />
+            </a>
+            {/* 
             <div className="flex gap-4">
               <a
                 href="#"
@@ -79,13 +88,7 @@ export function Footer() {
               >
                 <Twitter className="w-5 h-5" />
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-700 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
+              
               <a
                 href="#"
                 className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition-colors"
@@ -101,7 +104,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © {currentYear} Shael Systems. All rights reserved. Built with ❤️ for growing businesses.
+            © {currentYear} Shael Systems. All rights reserved.
           </p>
         </div>
       </div>
