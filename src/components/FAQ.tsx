@@ -15,15 +15,15 @@ const faqs = [
   },
   {
     question: "How long does it take to build a website?",
-    answer: "A simple website typically takes 1-2 weeks, while more complex projects can take 4-8 weeks. The timeline depends on the package you choose and how quickly you provide feedback and content. We'll give you a clear timeline during our discovery call.",
+    answer: "Most websites are built and launched within 2-4 weeks. The exact timeline depends on your package and how quickly you provide content and feedback. The Starter package is usually fastest, while Growth and Pro plans may take a bit longer due to additional features. We'll give you a clear timeline before we start.",
   },
   {
     question: "Do you offer revisions?",
-    answer: "Yes! All packages include revisions during the design and development phase. We want you to be completely happy with your website. The number of revisions varies by package, and we'll discuss this upfront.",
+    answer: "Yes! Revisions are included in all packages during the building phase. We work closely with you to make sure your website is exactly what you want. After launch, monthly updates and changes are handled through your monthly support plan.",
   },
   {
     question: "What kind of support do you provide?",
-    answer: "All packages include post-launch support ranging from 1 to 6 months depending on your plan. This includes bug fixes, minor updates, and technical assistance. We also offer ongoing maintenance plans if you need continued support.",
+    answer: "Every package includes monthly support that covers hosting, updates, security, and technical help. The Starter plan includes basic support, Growth adds monthly content updates, and Pro includes priority support with faster response times. We handle the tech so you can focus on your business.",
   },
   {
     question: "Will my website be mobile-friendly?",
@@ -41,10 +41,10 @@ function isNigeria(latitude: number, longitude: number) {
 
 function getPricingAnswer(isNigeriaVisitor: boolean) {
   if (isNigeriaVisitor) {
-    return "Our prices start from ₦300,000 for booking and appointment sites, ₦550,000 for ecommerce websites, and ₦1,000,000 for custom web development. The exact quote depends on your needs, features, and complexity, with no hidden fees.";
+    return "We offer three packages: Starter at ₦500,000 (plus ₦60,000/month), Growth at ₦1,200,000 (plus ₦180,000/month), and Pro at ₦2,500,000 (plus ₦350,000/month). Each includes the one-time build fee plus monthly hosting, updates, and support. There are no hidden fees—we're transparent about pricing from the start.";
   }
 
-  return "Our prices start from $999.99 for booking and appointment sites, $2,499.99 for ecommerce websites, and $4,999.99 for custom web development. Prices are shown in USD by default. The exact quote depends on your needs, features, and complexity, with no hidden fees.";
+  return "We offer three packages: Starter at $800 (plus $100/month), Growth at $1,800 (plus $300/month), and Pro at $3,500 (plus $600/month). Each includes the one-time build fee plus monthly hosting, updates, and support. There are no hidden fees—we're transparent about pricing from the start.";
 }
 
 export function FAQ() {

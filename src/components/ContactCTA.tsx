@@ -136,7 +136,7 @@ export function ContactCTA() {
                 <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
               </div>
               {submissionError && <p className="text-sm text-red-600" role="alert">{submissionError}</p>}
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" size="lg" disabled={!canSubmit}>
+              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer disabled:cursor-not-allowed" size="lg" disabled={!canSubmit}>
                 <Send className="mr-2 h-5 w-5" />
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
@@ -149,7 +149,7 @@ export function ContactCTA() {
               <p className="text-blue-100 mb-6 leading-relaxed">
                 Prefer a quick conversation? Message us on WhatsApp and get answers to your questions right away.
               </p>
-              <Button onClick={handleWhatsApp} size="lg" className="bg-green-500 hover:bg-green-600 text-white w-full sm:w-auto px-8">
+              <Button onClick={handleWhatsApp} size="lg" className="bg-green-500 hover:bg-green-600 text-white w-full sm:w-auto px-8 cursor-pointer">
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Chat on WhatsApp
               </Button>
