@@ -43,9 +43,16 @@ export function ContactCTA() {
 
       if (data.website) return;
 
-      const lastSubmission = Number(window.localStorage.getItem(SUBMISSION_KEY));
-      if (lastSubmission && Date.now() - lastSubmission < SUBMISSION_COOLDOWN_MS) {
-        setSubmissionError("Please wait a moment before sending another message.");
+      const lastSubmission = Number(
+        window.localStorage.getItem(SUBMISSION_KEY),
+      );
+      if (
+        lastSubmission &&
+        Date.now() - lastSubmission < SUBMISSION_COOLDOWN_MS
+      ) {
+        setSubmissionError(
+          "Please wait a moment before sending another message.",
+        );
         return;
       }
 
@@ -66,7 +73,9 @@ export function ContactCTA() {
         window.localStorage.setItem(SUBMISSION_KEY, String(Date.now()));
         setSubmissionSuccess(true);
       } catch {
-        setSubmissionError("There was an error sending your message. Please try again later.");
+        setSubmissionError(
+          "There was an error sending your message. Please try again later.",
+        );
       }
     })(event);
   };
@@ -100,8 +109,8 @@ export function ContactCTA() {
             Ready to Grow Your Business Online?
           </h2>
           <p className="text-lg text-blue-100 max-w-2xl mx-auto">
-            Let's create a digital experience that makes your next move easier. Get in touch today
-            for a free consultation.
+            Let's create a digital experience that makes your next move easier.
+            Get in touch today for a free consultation.
           </p>
         </div>
 
@@ -112,26 +121,80 @@ export function ContactCTA() {
               <h3 className="text-2xl font-semibold">Send us a message</h3>
             </div>
 
-            <form method="POST" onSubmit={submitHandler} noValidate className="space-y-4">
+            <form
+              method="POST"
+              onSubmit={submitHandler}
+              noValidate
+              className="space-y-4"
+            >
               <div>
-                <Input type="text" placeholder="Your Name" {...register("name")} className="w-full" />
-                {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
+                <Input
+                  type="text"
+                  placeholder="Your Name"
+                  {...register("name")}
+                  className="w-full"
+                />
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.name.message}
+                  </p>
+                )}
               </div>
               <div>
-                <Input type="email" placeholder="Your Email" {...register("email")} className="w-full" />
-                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
+                <Input
+                  type="email"
+                  placeholder="Your Email"
+                  {...register("email")}
+                  className="w-full"
+                />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
               <div>
-                <Textarea placeholder="Tell us about your project..." {...register("message")} className="w-full min-h-32" />
-                {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>}
+                <Textarea
+                  placeholder="Tell us about your project..."
+                  {...register("message")}
+                  className="w-full min-h-32"
+                />
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.message.message}
+                  </p>
+                )}
               </div>
-              <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
+              <div
+                className="absolute -left-[10000px] h-px w-px overflow-hidden"
+                aria-hidden="true"
+              >
                 <label htmlFor="website">Leave this field empty</label>
-                <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
+                <input
+                  id="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  {...register("website")}
+                />
               </div>
-              {submissionError && <p className="text-sm text-red-600" role="alert">{submissionError}</p>}
-              {submissionSuccess && <p className="text-sm text-green-700" role="status">Thanks, your message is on its way. We&apos;ll be in touch soon.</p>}
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer disabled:cursor-not-allowed" size="lg" disabled={!canSubmit}>
+              {submissionError && (
+                <p className="text-sm text-red-600" role="alert">
+                  {submissionError}
+                </p>
+              )}
+              {submissionSuccess && (
+                <p className="text-sm text-green-700" role="status">
+                  Thanks, your message is on its way. We&apos;ll be in touch
+                  soon.
+                </p>
+              )}
+              <Button
+                type="submit"
+                className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer disabled:cursor-not-allowed"
+                size="lg"
+                disabled={!canSubmit}
+              >
                 <Send className="mr-2 h-5 w-5" />
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
@@ -140,18 +203,31 @@ export function ContactCTA() {
 
           <div className="flex flex-col justify-center space-y-6">
             <div>
-              <h3 className="text-2xl font-semibold mb-4">Or chat with us instantly</h3>
+              <h3 className="text-2xl font-semibold mb-4">
+                Or chat with us instantly
+              </h3>
               <p className="text-blue-100 mb-6 leading-relaxed">
-                Prefer a quick conversation? Message us on WhatsApp and get answers to your questions right away.
+                Prefer a quick conversation? Message us on WhatsApp and get
+                answers to your questions right away.
               </p>
-              <Button onClick={handleWhatsApp} size="lg" className="bg-green-500 hover:bg-green-600 text-white w-full sm:w-auto px-8 cursor-pointer">
+              <Button
+                onClick={handleWhatsApp}
+                size="lg"
+                className="bg-green-500 hover:bg-green-600 text-white w-full sm:w-auto px-8 cursor-pointer"
+              >
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Chat on WhatsApp
               </Button>
             </div>
             <div className="border-t border-blue-500 pt-6">
-              <p className="text-blue-100 text-sm"><strong className="text-white">Response time:</strong> Usually within 24 hours</p>
-              <p className="text-blue-100 text-sm mt-2"><strong className="text-white">Free consultation:</strong> No obligations, just honest advice</p>
+              <p className="text-blue-100 text-sm">
+                <strong className="text-white">Response time:</strong> Usually
+                within 24 hours
+              </p>
+              <p className="text-blue-100 text-sm mt-2">
+                <strong className="text-white">Free consultation:</strong> No
+                obligations, just honest advice
+              </p>
             </div>
           </div>
         </div>

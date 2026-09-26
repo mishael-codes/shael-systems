@@ -1,18 +1,20 @@
 import { Resend } from "resend";
 import { z } from "zod";
 
-const quoteRequestSchema = z.object({
-  name: z.string().trim().min(2).max(100),
-  email: z.string().trim().email().max(254),
-  business: z.string().trim().max(150).optional(),
-  message: z.string().trim().min(10).max(5000).optional(),
-  goals: z.string().trim().min(10).max(5000).optional(),
-  website: z.string().max(0).optional(),
-  source: z.string().trim().max(100).optional(),
-}).refine((data) => data.message || data.goals, {
-  message: "A project message or goal is required.",
-  path: ["message"],
-});
+const quoteRequestSchema = z
+  .object({
+    name: z.string().trim().min(2).max(100),
+    email: z.string().trim().email().max(254),
+    business: z.string().trim().max(150).optional(),
+    message: z.string().trim().min(10).max(5000).optional(),
+    goals: z.string().trim().min(10).max(5000).optional(),
+    website: z.string().max(0).optional(),
+    source: z.string().trim().max(100).optional(),
+  })
+  .refine((data) => data.message || data.goals, {
+    message: "A project message or goal is required.",
+    path: ["message"],
+  });
 
 export default async function handler(request: Request): Promise<Response> {
   if (request.method !== "POST") {
@@ -21,7 +23,10 @@ export default async function handler(request: Request): Promise<Response> {
 
   if (!process.env.RESEND_API_KEY) {
     console.error("RESEND_API_KEY is not configured");
-    return Response.json({ error: "Email service is not configured" }, { status: 500 });
+    return Response.json(
+      { error: "Email service is not configured" },
+      { status: 500 },
+    );
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -31,7 +36,10 @@ export default async function handler(request: Request): Promise<Response> {
     const parsed = quoteRequestSchema.safeParse(body);
 
     if (!parsed.success) {
-      return Response.json({ error: "Please check the form and try again." }, { status: 400 });
+      return Response.json(
+        { error: "Please check the form and try again." },
+        { status: 400 },
+      );
     }
 
     if (parsed.data.website) {
@@ -39,7 +47,9 @@ export default async function handler(request: Request): Promise<Response> {
     }
 
     const message = parsed.data.message ?? parsed.data.goals ?? "";
-    const business = parsed.data.business ? `\nBusiness: ${parsed.data.business}` : "";
+    const business = parsed.data.business
+      ? `\nBusiness: ${parsed.data.business}`
+      : "";
     const source = parsed.data.source ? ` (${parsed.data.source})` : "";
 
     const { error } = await resend.emails.send({
@@ -52,12 +62,18 @@ export default async function handler(request: Request): Promise<Response> {
 
     if (error) {
       console.error("Resend rejected the email", error);
-      return Response.json({ error: "We could not send your message." }, { status: 502 });
+      return Response.json(
+        { error: "We could not send your message." },
+        { status: 502 },
+      );
     }
 
     return Response.json({ ok: true });
   } catch (error) {
     console.error("Quote form request failed", error);
-    return Response.json({ error: "We could not send your message." }, { status: 500 });
+    return Response.json(
+      { error: "We could not send your message." },
+      { status: 500 },
+    );
   }
 }

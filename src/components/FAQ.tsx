@@ -14,23 +14,28 @@ const faqs = [
   },
   {
     question: "How long does it take to build a website?",
-    answer: "Most websites are built and launched within 2-4 weeks. The exact timeline depends on your package and how quickly you provide content and feedback. The Starter package is usually fastest, while Growth and Pro plans may take a bit longer due to additional features. We'll give you a clear timeline before we start.",
+    answer:
+      "Most websites are built and launched within 2-4 weeks. The exact timeline depends on your package and how quickly you provide content and feedback. The Starter package is usually fastest, while Growth and Pro plans may take a bit longer due to additional features. We'll give you a clear timeline before we start.",
   },
   {
     question: "Do you offer revisions?",
-    answer: "Yes! Revisions are included in all packages during the building phase. We work closely with you to make sure your website is exactly what you want. After launch, monthly updates and changes are handled through your monthly support plan.",
+    answer:
+      "Yes! Revisions are included in all packages during the building phase. We work closely with you to make sure your website is exactly what you want. After launch, monthly updates and changes are handled through your monthly support plan.",
   },
   {
     question: "What kind of support do you provide?",
-    answer: "Every package includes monthly support that covers hosting, updates, security, and technical help. The Starter plan includes basic support, Growth adds monthly content updates, and Pro includes priority support with faster response times. We handle the tech so you can focus on your business.",
+    answer:
+      "Every package includes monthly support that covers hosting, updates, security, and technical help. The Starter plan includes basic support, Growth adds monthly content updates, and Pro includes priority support with faster response times. We handle the tech so you can focus on your business.",
   },
   {
     question: "Will my website be mobile-friendly?",
-    answer: "Absolutely! Every website we build is fully responsive and optimized for mobile devices, tablets, and desktops. We follow mobile-first design principles to ensure a perfect experience on all screen sizes.",
+    answer:
+      "Absolutely! Every website we build is fully responsive and optimized for mobile devices, tablets, and desktops. We follow mobile-first design principles to ensure a perfect experience on all screen sizes.",
   },
   {
     question: "Can you help with content and copywriting?",
-    answer: "Yes! We can help refine your content and suggest improvements for better conversions. For more extensive copywriting needs, we can recommend professional copywriters or include it as an add-on service.",
+    answer:
+      "Yes! We can help refine your content and suggest improvements for better conversions. For more extensive copywriting needs, we can recommend professional copywriters or include it as an add-on service.",
   },
 ];
 
@@ -55,7 +60,9 @@ export function FAQ() {
               className="bg-white rounded-lg px-6 border border-gray-200"
             >
               <AccordionTrigger className="text-left hover:no-underline py-6">
-                <span className="font-semibold text-gray-900">{faq.question}</span>
+                <span className="font-semibold text-gray-900">
+                  {faq.question}
+                </span>
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
                 {faq.question === "How much does a website cost?"

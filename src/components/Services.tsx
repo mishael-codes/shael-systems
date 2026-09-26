@@ -19,13 +19,22 @@ export function Services() {
           tailored quote.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 cursor-pointer px-8">
+          <Button
+            asChild
+            size="lg"
+            className="bg-blue-600 hover:bg-blue-700 cursor-pointer px-8"
+          >
             <a href="#contact">
               <Send className="mr-2 h-5 w-5" />
               Get a Quote
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline" className="cursor-pointer px-8">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="cursor-pointer px-8"
+          >
             <a
               href="https://wa.me/+2348067575432?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote%20for%20my%20project."
               target="_blank"
