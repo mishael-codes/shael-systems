@@ -1,10 +1,14 @@
 import { Resend } from "resend";
 import { z } from "zod";
 
+export const config = {
+  runtime: "nodejs",
+};
+
 const quoteRequestSchema = z
   .object({
     name: z.string().trim().min(2).max(100),
-    email: z.string().trim().email().max(254),
+    email: z.email().trim().max(254),
     business: z.string().trim().max(150).optional(),
     message: z.string().trim().min(10).max(5000).optional(),
     goals: z.string().trim().min(10).max(5000).optional(),
@@ -21,7 +25,12 @@ export default async function handler(request: Request): Promise<Response> {
     return Response.json({ error: "Method not allowed" }, { status: 405 });
   }
 
-  if (!process.env.RESEND_API_KEY) {
+  const runtimeProcess = globalThis as typeof globalThis & {
+    process?: { env?: Record<string, string | undefined> };
+  };
+  const apiKey = runtimeProcess.process?.env?.RESEND_API_KEY;
+
+  if (!apiKey) {
     console.error("RESEND_API_KEY is not configured");
     return Response.json(
       { error: "Email service is not configured" },
@@ -29,7 +38,7 @@ export default async function handler(request: Request): Promise<Response> {
     );
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const resend = new Resend(apiKey);
 
   try {
     const body = await request.json();
@@ -52,16 +61,26 @@ export default async function handler(request: Request): Promise<Response> {
       : "";
     const source = parsed.data.source ? ` (${parsed.data.source})` : "";
 
-    const { error } = await resend.emails.send({
-      from: "Shael Systems <forms@shaelsystems.com>",
-      to: ["hello@shaelsystems.com"],
-      replyTo: parsed.data.email,
-      subject: `New project enquiry${source}: ${parsed.data.name}`,
-      text: `Name: ${parsed.data.name}\nEmail: ${parsed.data.email}${business}\n\n${message}`,
-    });
+    const timeoutMs = 15000;
+    const result = await Promise.race([
+      resend.emails.send({
+        from: "Shael Systems <forms@shaelsystems.com>",
+        to: ["hello@shaelsystems.com"],
+        replyTo: parsed.data.email,
+        subject: `New project enquiry${source}: ${parsed.data.name}`,
+        text: `Name: ${parsed.data.name}\nEmail: ${parsed.data.email}${business}\n\n${message}`,
+      }),
+      new Promise<never>((_, reject) => {
+        setTimeout(
+          () => reject(new Error("Resend request timed out")),
+          timeoutMs,
+        );
+      }),
+    ]);
 
-    if (error) {
-      console.error("Resend rejected the email", error);
+    if ("error" in (result as { error?: unknown })) {
+      const emailError = (result as { error?: unknown }).error;
+      console.error("Resend rejected the email", emailError);
       return Response.json(
         { error: "We could not send your message." },
         { status: 502 },

@@ -73,6 +73,9 @@ function QuoteForm({ compact = false }: QuoteFormProps) {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 15000);
+
     try {
       const response = await fetch("/api/send-quote", {
         method: "POST",
@@ -85,13 +88,20 @@ function QuoteForm({ compact = false }: QuoteFormProps) {
           website: formData.get("website"),
           source: "landing page",
         }),
+        signal: controller.signal,
       });
 
       if (!response.ok) throw new Error("Quote request failed");
       form.reset();
       setStatus("success");
-    } catch {
-      setStatus("error");
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        setStatus("error");
+      } else {
+        setStatus("error");
+      }
+    } finally {
+      window.clearTimeout(timeoutId);
     }
   };
 

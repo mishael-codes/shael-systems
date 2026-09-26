@@ -56,6 +56,9 @@ export function ContactCTA() {
         return;
       }
 
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), 15000);
+
       try {
         const response = await fetch("/api/send-quote", {
           method: "POST",
@@ -67,15 +70,24 @@ export function ContactCTA() {
             website: data.website,
             source: "contact form",
           }),
+          signal: controller.signal,
         });
 
         if (!response.ok) throw new Error("Contact request failed");
         window.localStorage.setItem(SUBMISSION_KEY, String(Date.now()));
         setSubmissionSuccess(true);
-      } catch {
-        setSubmissionError(
-          "There was an error sending your message. Please try again later.",
-        );
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          setSubmissionError(
+            "The request took too long. Please check your connection and try again.",
+          );
+        } else {
+          setSubmissionError(
+            "There was an error sending your message. Please try again later.",
+          );
+        }
+      } finally {
+        window.clearTimeout(timeoutId);
       }
     })(event);
   };
