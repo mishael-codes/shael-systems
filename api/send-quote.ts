@@ -135,8 +135,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }),
     ]);
 
-    if ("error" in (result as { error?: unknown })) {
-      const emailError = (result as { error?: unknown }).error;
+    if (result.error) {
+      const emailError = result.error;
       console.error("Resend rejected the email", emailError);
       return res.status(502).json({ error: "We could not send your message." });
     }
