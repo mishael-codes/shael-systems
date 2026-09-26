@@ -1,363 +1,39 @@
-// "use client";
-
-// import { useEffect, useState } from "react";
-// import { Check } from "lucide-react";
-// import { Card } from "./ui/card";
-// import { Button } from "./ui/button";
-
-// const packages = [
-//   {
-//     name: "Booking and Appointment Sites",
-//     price: 1500,
-//     ngnPrice: 300000,
-//     features: [
-//       "Clients can book appointments without calling you",
-//       "Customers can quickly find your business details and contact information",
-//       "Your site feels professional and easy to use on every device",
-//       "A smooth experience for visitors on phones, tablets, and desktops",
-//       "Three months of support after launch",
-//     ],
-//   },
-//   {
-//     name: "E-Commerce Websites",
-//     price: 5000,
-//     ngnPrice: 550000,
-//     features: [
-//       "Display your products in a clean, easy to browse store",
-//       "Accept payments securely from customers anywhere in the world",
-//       "Keep track of stock and orders without manual hassle",
-//       "Customers receive updates on their purchases with ease",
-//       "Create a shopping experience that feels simple and professional",
-//       "A store that works smoothly on any device",
-//       "Three months of priority support after launch",
-//     ],
-//     popular: true,
-//   },
-//   {
-//     name: "Custom Web Development",
-//     // description: "Complete digital transformation",
-//     price: 8000,
-//     ngnPrice: 1000000,
-//     features: [
-//       "A private dashboard to manage your business operations",
-//       "Secure access for only the right people",
-//       "Keep your business data organised in one place",
-//       "Automate repetitive tasks and save valuable time",
-//       "Track your performance with clear insights and analytics",
-//       "Accept payments directly through your platform",
-//       "Six months of priority support after launch",
-//     ],
-//   },
-// ];
-
-// function isNigeria(latitude: number, longitude: number) {
-//   return latitude >= 4.2 && latitude <= 13.9 && longitude >= 2.6 && longitude <= 14.7;
-// }
-
-// export function Services() {
-//   const [isNigeriaVisitor, setIsNigeriaVisitor] = useState(false);
-//   const [, setLocationStatus] = useState<"asking" | "detected" | "unavailable">(
-//     () => (typeof navigator !== "undefined" && !navigator.geolocation ? "unavailable" : "asking"),
-//   );
-
-//   useEffect(() => {
-//     if (!navigator.geolocation) {
-//       return;
-//     }
-
-//     navigator.geolocation.getCurrentPosition(
-//       ({ coords }) => {
-//         setIsNigeriaVisitor(isNigeria(coords.latitude, coords.longitude));
-//         setLocationStatus("detected");
-//       },
-//       () => setLocationStatus("unavailable"),
-//       { enableHighAccuracy: false, timeout: 8000, maximumAge: 3600000 },
-//     );
-//   }, []);
-
-//   const formatPrice = (price: number, ngnPrice: number) => {
-//     if (isNigeriaVisitor) {
-//       return new Intl.NumberFormat("en-NG", {
-//         style: "currency",
-//         currency: "NGN",
-//         maximumFractionDigits: 0,
-//       }).format(ngnPrice);
-//     }
-
-//     return new Intl.NumberFormat("en-US", {
-//       style: "currency",
-//       currency: "USD",
-//       minimumFractionDigits: 2,
-//     }).format(price);
-//   };
-
-//   const handleChoosePlan = (planName: string) => {
-//     const message = `Hi! I'm interested in the ${planName} package.`;
-//     window.open(
-//       `https://wa.me/2348167177172?text=${encodeURIComponent(message)}`,
-//       "_blank",
-//     );
-//   };
-
-//   return (
-//     <section className="py-20 px-6 bg-white">
-//       <div className="mx-auto max-w-7xl">
-//         <div className="text-center mb-16">
-//           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-//             Web solutions for businesses of every kind
-//           </h2>
-//           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-//             Transparent pricing with no hidden fees. Every package includes modern
-//             design, clean code, and a user friendly experience.
-//           </p>
-//         </div>
-
-//         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-//           {packages.map((pkg, index) => (
-//             <Card
-//               key={index}
-//               className={`p-8 relative border ${pkg.popular ? "border-blue-600 shadow-lg" : "border-gray-200"}`}
-//             >
-//               <div className="text-center mb-6">
-//                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
-//                   {pkg.name}
-//                 </h3>
-//                 <div className="text-4xl font-bold text-gray-900">
-//                   <span className="text-xs">Starting from</span> <br />{formatPrice(pkg.price, pkg.ngnPrice)}
-//                 </div>
-//               </div>
-
-//               <ul className="space-y-4 mb-8">
-//                 {pkg.features.map((feature, i) => (
-//                   <li key={i} className="flex items-start gap-3">
-//                     <Check className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-//                     <span className="text-gray-700">{feature}</span>
-//                   </li>
-//                 ))}
-//               </ul>
-
-//               <Button
-//                 className={`w-full cursor-pointer ${pkg.popular ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-900 hover:bg-gray-800"}`}
-//                 size="lg"
-//                 onClick={() => handleChoosePlan(pkg.name)}
-//               >
-//                 {pkg.name === "Custom Web Development" ? "Book Discovery Call" : "Get A Quote"}
-//               </Button>
-//             </Card>
-//           ))}
-//         </div>
-
-//         {/* Custom quote CTA */}
-//         <div className="mt-16 text-center bg-gray-50 border border-gray-200 rounded-2xl px-8 py-12">
-//           <h3 className="text-2xl font-bold text-gray-900 mb-3">
-//             Need something different?
-//           </h3>
-//           <p className="text-gray-600 max-w-xl mx-auto mb-8">
-//             Every business is unique. If your project doesn't fit one of the
-//             categories above, we'll create a custom solution tailored to your
-//             goals.
-//           </p>
-//           <Button
-//             size="lg"
-//             className="bg-blue-600 hover:bg-blue-700 cursor-pointer px-8"
-//             onClick={() => {
-//               const message = `Hi! I'd like to request a custom quote for my project.`;
-//               window.open(
-//                 `https://wa.me/2348167177172?text=${encodeURIComponent(message)}`,
-//                 "_blank",
-//               );
-//             }}
-//           >
-//             Request a Custom Quote
-//           </Button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 "use client";
 
-import { useEffect, useState } from "react";
-import { Check } from "lucide-react";
-import { Card } from "./ui/card";
+import { MessageCircle, Send } from "lucide-react";
 import { Button } from "./ui/button";
 
-const packages = [
-  {
-    name: "Starter",
-    price: 800,
-    ngnPrice: 500000,
-    retainerPrice: 100,
-    retainerNgnPrice: 60000,
-    features: [
-      "A professional website that builds instant trust with customers",
-      "Contact form so leads can reach you without calling first",
-      "Looks great and works smoothly on any phone, tablet, or desktop",
-      "Basic search visibility so customers can find you on Google",
-      "Hosting, updates, and maintenance handled for you monthly",
-    ],
-  },
-  {
-    name: "Growth",
-    price: 1800,
-    ngnPrice: 1200000,
-    retainerPrice: 300,
-    retainerNgnPrice: 180000,
-    features: [
-      "Everything in Starter",
-      "Clients can book appointments online without calling you",
-      "Photo gallery to showcase your work and build credibility",
-      "Google reviews displayed automatically on your site",
-      "Monthly content updates so your site stays fresh",
-    ],
-    popular: true,
-  },
-  {
-    name: "Pro",
-    price: 3500,
-    ngnPrice: 2500000,
-    retainerPrice: 600,
-    retainerNgnPrice: 350000,
-    features: [
-      "Everything in Growth",
-      "Customer accounts so clients can view bookings and history",
-      "A simple admin dashboard to manage your business from anywhere",
-      "Automate repetitive tasks and save time every week",
-      "Priority support and faster turnaround on requests",
-    ],
-  },
-];
-
-function isNigeria(latitude: number, longitude: number) {
-  return (
-    latitude >= 4.2 && latitude <= 13.9 && longitude >= 2.6 && longitude <= 14.7
-  );
-}
-
 export function Services() {
-  const [isNigeriaVisitor, setIsNigeriaVisitor] = useState(false);
-  const [, setLocationStatus] = useState<"asking" | "detected" | "unavailable">(
-    () =>
-      typeof navigator !== "undefined" && !navigator.geolocation
-        ? "unavailable"
-        : "asking",
-  );
-
-  useEffect(() => {
-    if (!navigator.geolocation) {
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
-        setIsNigeriaVisitor(isNigeria(coords.latitude, coords.longitude));
-        setLocationStatus("detected");
-      },
-      () => setLocationStatus("unavailable"),
-      { enableHighAccuracy: false, timeout: 8000, maximumAge: 3600000 },
-    );
-  }, []);
-
-  const formatPrice = (price: number, ngnPrice: number) => {
-    if (isNigeriaVisitor) {
-      return new Intl.NumberFormat("en-NG", {
-        style: "currency",
-        currency: "NGN",
-        maximumFractionDigits: 0,
-      }).format(ngnPrice);
-    }
-
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-    }).format(price);
-  };
-
-  const handleChoosePlan = (planName: string) => {
-    const message = `Hi! I'm interested in the ${planName} package.`;
-    window.open(
-      `https://wa.me/2348167177172?text=${encodeURIComponent(message)}`,
-      "_blank",
-    );
-  };
-
   return (
     <section className="py-20 px-6 bg-white">
-      <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Websites built for local service businesses
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Transparent pricing with no hidden fees. Every package includes a
-            one-time build fee plus a monthly plan that covers hosting, updates,
-            and support — so you never have to touch the tech.
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {packages.map((pkg, index) => (
-            <Card
-              key={index}
-              className={`p-8 relative border ${pkg.popular ? "border-blue-600 shadow-lg" : "border-gray-200"}`}
+      <div className="mx-auto max-w-4xl text-center">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 mb-4">
+          Have a project in mind?
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          Need a project? Get a quote.
+        </h2>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+          Every business is different. Tell us what you want to build, and we’ll
+          recommend the right approach, scope the work clearly, and send you a
+          tailored quote.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 cursor-pointer px-8">
+            <a href="#contact">
+              <Send className="mr-2 h-5 w-5" />
+              Get a Quote
+            </a>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="cursor-pointer px-8">
+            <a
+              href="https://wa.me/+2348067575432?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote%20for%20my%20project."
+              target="_blank"
+              rel="noreferrer"
             >
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {pkg.name}
-                </h3>
-                <div className="text-4xl font-bold text-gray-900">
-                  <span className="text-xs">Build from</span> <br />
-                  {formatPrice(pkg.price, pkg.ngnPrice)}
-                </div>
-                <div className="text-sm text-gray-500 mt-2">
-                  + {formatPrice(pkg.retainerPrice, pkg.retainerNgnPrice)}/mo
-                </div>
-              </div>
-
-              <ul className="space-y-4 mb-8">
-                {pkg.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                className={`w-full cursor-pointer ${pkg.popular ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-900 hover:bg-gray-800"}`}
-                size="lg"
-                onClick={() => handleChoosePlan(pkg.name)}
-              >
-                {pkg.name === "Pro" ? "Book Discovery Call" : "Get A Quote"}
-              </Button>
-            </Card>
-          ))}
-        </div>
-
-        {/* Custom quote CTA */}
-        <div className="mt-16 text-center bg-gray-50 border border-gray-200 rounded-2xl px-8 py-12">
-          <h3 className="text-2xl font-bold text-gray-900 mb-3">
-            Need something different?
-          </h3>
-          <p className="text-gray-600 max-w-xl mx-auto mb-8">
-            Ecommerce, custom dashboards, or something more complex — if it
-            doesn't fit one of the packages above, tell us what you need and
-            we'll scope it together.
-          </p>
-          <Button
-            size="lg"
-            className="bg-blue-600 hover:bg-blue-700 cursor-pointer px-8"
-            onClick={() => {
-              const message = `Hi! I'd like to request a custom quote for my project.`;
-              window.open(
-                `https://wa.me/2348167177172?text=${encodeURIComponent(message)}`,
-                "_blank",
-              );
-            }}
-          >
-            Request a Custom Quote
+              <MessageCircle className="mr-2 h-5 w-5" />
+              Chat on WhatsApp
+            </a>
           </Button>
         </div>
       </div>

@@ -10,6 +10,7 @@ import { Portfolio } from "./components/Portfolio";
 import { Process } from "./components/Process";
 import { FAQ } from "./components/FAQ";
 import { ContactCTA } from "./components/ContactCTA";
+import { LandingPages } from "./components/LandingPages";
 import { Footer } from "./components/Footer";
 import { CaseStudy } from "./components/CaseStudy";
 import { NotFound } from "./components/NotFound";
@@ -68,6 +69,7 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/landing-pages" element={<LandingPages />} />
           <Route path="/case-study/:id" element={<CaseStudy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

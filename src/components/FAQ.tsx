@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -35,31 +34,7 @@ const faqs = [
   },
 ];
 
-function isNigeria(latitude: number, longitude: number) {
-  return latitude >= 4.2 && latitude <= 13.9 && longitude >= 2.6 && longitude <= 14.7;
-}
-
-function getPricingAnswer(isNigeriaVisitor: boolean) {
-  if (isNigeriaVisitor) {
-    return "We offer three packages: Starter at ₦500,000 (plus ₦60,000/month), Growth at ₦1,200,000 (plus ₦180,000/month), and Pro at ₦2,500,000 (plus ₦350,000/month). Each includes the one-time build fee plus monthly hosting, updates, and support. There are no hidden fees—we're transparent about pricing from the start.";
-  }
-
-  return "We offer three packages: Starter at $800 (plus $100/month), Growth at $1,800 (plus $300/month), and Pro at $3,500 (plus $600/month). Each includes the one-time build fee plus monthly hosting, updates, and support. There are no hidden fees—we're transparent about pricing from the start.";
-}
-
 export function FAQ() {
-  const [isNigeriaVisitor, setIsNigeriaVisitor] = useState(false);
-
-  useEffect(() => {
-    if (!navigator.geolocation) return;
-
-    navigator.geolocation.getCurrentPosition(
-      ({ coords }) => setIsNigeriaVisitor(isNigeria(coords.latitude, coords.longitude)),
-      () => undefined,
-      { enableHighAccuracy: false, timeout: 8000, maximumAge: 3600000 },
-    );
-  }, []);
-
   return (
     <section className="py-20 px-6 bg-gray-50">
       <div className="mx-auto max-w-3xl">
@@ -84,7 +59,7 @@ export function FAQ() {
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
                 {faq.question === "How much does a website cost?"
-                  ? getPricingAnswer(isNigeriaVisitor)
+                  ? "Every project is scoped around your goals, features, and timeline. Get in touch with a few details about what you want to build and we’ll send a tailored quote with clear next steps."
                   : faq.answer}
               </AccordionContent>
             </AccordionItem>

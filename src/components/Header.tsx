@@ -31,6 +31,12 @@ export function Header() {
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           <a
+            href="/landing-pages"
+            className="text-sm text-slate-600 transition-colors hover:text-blue-600"
+          >
+            Landing pages
+          </a>
+          <a
             href="#services"
             onClick={(e) => {
               e.preventDefault();
@@ -81,6 +87,13 @@ export function Header() {
       </div>
       {isMenuOpen && (
         <nav className="flex flex-col gap-4 border-t border-blue-100 px-6 py-5 md:hidden">
+          <Link
+            to="/landing-pages"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-slate-700"
+          >
+            Landing pages
+          </Link>
           <a
             href="#services"
             onClick={(e) => {

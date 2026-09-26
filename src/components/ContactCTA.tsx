@@ -32,12 +32,14 @@ export function ContactCTA() {
   });
 
   const [submissionError, setSubmissionError] = useState("");
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
 
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     void handleSubmit(async (data: ContactData) => {
       setSubmissionError("");
+      setSubmissionSuccess(false);
 
       if (data.website) return;
 
@@ -48,30 +50,22 @@ export function ContactCTA() {
       }
 
       try {
-        const form = document.createElement("form");
-        form.method = "POST";
-        form.action = "https://formsubmit.co/hello@shaelsystems.com";
-        form.style.display = "none";
+        const response = await fetch("/api/send-quote", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            website: data.website,
+            source: "contact form",
+          }),
+        });
 
-        const addInput = (name: string, value: string) => {
-          const input = document.createElement("input");
-          input.type = "hidden";
-          input.name = name;
-          input.value = value;
-          form.appendChild(input);
-        };
-
-        addInput("name", data.name);
-        addInput("email", data.email);
-        addInput("message", data.message);
-        addInput("_subject", `Website contact: ${data.name}`);
-        addInput("_template", "table");
-        addInput("_next", "/thank-you");
-        document.body.appendChild(form);
+        if (!response.ok) throw new Error("Contact request failed");
         window.localStorage.setItem(SUBMISSION_KEY, String(Date.now()));
-        form.submit();
-      } catch (error) {
-        console.error("[v0] Contact form submission failed", error);
+        setSubmissionSuccess(true);
+      } catch {
         setSubmissionError("There was an error sending your message. Please try again later.");
       }
     })(event);
@@ -136,6 +130,7 @@ export function ContactCTA() {
                 <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
               </div>
               {submissionError && <p className="text-sm text-red-600" role="alert">{submissionError}</p>}
+              {submissionSuccess && <p className="text-sm text-green-700" role="status">Thanks, your message is on its way. We&apos;ll be in touch soon.</p>}
               <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer disabled:cursor-not-allowed" size="lg" disabled={!canSubmit}>
                 <Send className="mr-2 h-5 w-5" />
                 {isSubmitting ? "Sending..." : "Send Message"}
