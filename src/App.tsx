@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
@@ -14,6 +14,7 @@ import { LandingPages } from "./components/LandingPages";
 import { Footer } from "./components/Footer";
 import { CaseStudy } from "./components/CaseStudy";
 import { NotFound } from "./components/NotFound";
+import { MockupModal } from "./components/MockupModal";
 
 function ScrollToHashElement() {
   const { hash, pathname } = useLocation();
@@ -47,10 +48,10 @@ function ScrollToHashElement() {
   return null;
 }
 
-function Home() {
+function Home({ onMockupClick }: { onMockupClick: () => void }) {
   return (
     <>
-      <Hero />
+      <Hero onMockupClick={onMockupClick} />
       <div className="reveal">
         <Testimonials />
       </div>
@@ -80,19 +81,30 @@ function Home() {
 }
 
 export default function App() {
+  const [isMockupModalOpen, setIsMockupModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Header />
+      <Header onMockupClick={() => setIsMockupModalOpen(true)} />
       <ScrollToHashElement />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <Home onMockupClick={() => setIsMockupModalOpen(true)} />
+            }
+          />
           <Route path="/landing-pages" element={<LandingPages />} />
           <Route path="/case-study/:id" element={<CaseStudy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
+      <MockupModal
+        open={isMockupModalOpen}
+        onClose={() => setIsMockupModalOpen(false)}
+      />
     </div>
   );
 }

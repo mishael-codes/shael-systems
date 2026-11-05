@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "How much does a website cost?",
     answer:
-      "Landing page packages start from $350 USD. Booking and appointment sites start from $1,500 USD, e-commerce websites from $5,000 USD, and custom web development from $8,000 USD. These are starting points; your final quote depends on the page goal, features, integrations, and timeline.",
+      "Landing page packages start from $350. Booking and appointment sites start from $1,200, e-commerce websites from $5,000, and custom web development from $8,000. These are starting points; your final quote depends on the page goal, features, integrations, and timeline.",
   },
   {
     question: "How long does it take to build a website?",

@@ -10,6 +10,9 @@ const quoteRequestSchema = z
     name: z.string().trim().min(2).max(100),
     email: z.email().trim().max(254),
     business: z.string().trim().max(150).optional(),
+    businessType: z.string().trim().max(100).optional(),
+    industry: z.string().trim().max(100).optional(),
+    phone: z.string().trim().max(40).optional(),
     message: z.string().trim().min(10).max(5000).optional(),
     goals: z.string().trim().min(10).max(5000).optional(),
     website: z.string().max(0).optional(),
@@ -155,6 +158,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const message = parsed.data.message ?? parsed.data.goals ?? "";
     const business = parsed.data.business ?? "Not provided";
+    const businessType = parsed.data.businessType ?? "Not provided";
+    const industry = parsed.data.industry ?? "Not provided";
+    const phone = parsed.data.phone ?? "Not provided";
     const source = parsed.data.source ?? "Website form";
     const safeName = escapeHtml(parsed.data.name);
     const safeEmail = escapeHtml(parsed.data.email);
@@ -175,6 +181,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           `Name: ${parsed.data.name}`,
           `Email: ${parsed.data.email}`,
           `Business: ${business}`,
+          `Site type: ${businessType}`,
+          `Industry: ${industry}`,
+          `Phone/WhatsApp: ${phone}`,
           `Source: ${source}`,
           "",
           message,
@@ -192,6 +201,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                   <tr><td style="padding:12px 0;border-top:1px solid #e2e8f0;color:#64748b;width:30%;">Name</td><td style="padding:12px 0;border-top:1px solid #e2e8f0;font-weight:bold;">${safeName}</td></tr>
                   <tr><td style="padding:12px 0;border-top:1px solid #e2e8f0;color:#64748b;">Email</td><td style="padding:12px 0;border-top:1px solid #e2e8f0;"><a href="mailto:${encodeURIComponent(parsed.data.email)}" style="color:#2563eb;">${safeEmail}</a></td></tr>
                   <tr><td style="padding:12px 0;border-top:1px solid #e2e8f0;color:#64748b;">Business</td><td style="padding:12px 0;border-top:1px solid #e2e8f0;">${safeBusiness}</td></tr>
+                  <tr><td style="padding:12px 0;border-top:1px solid #e2e8f0;color:#64748b;">Site type</td><td style="padding:12px 0;border-top:1px solid #e2e8f0;">${escapeHtml(businessType)}</td></tr>
+                  <tr><td style="padding:12px 0;border-top:1px solid #e2e8f0;color:#64748b;">Industry</td><td style="padding:12px 0;border-top:1px solid #e2e8f0;">${escapeHtml(industry)}</td></tr>
+                  <tr><td style="padding:12px 0;border-top:1px solid #e2e8f0;color:#64748b;">Phone/WhatsApp</td><td style="padding:12px 0;border-top:1px solid #e2e8f0;">${escapeHtml(phone)}</td></tr>
                   <tr><td style="padding:12px 0;border-top:1px solid #e2e8f0;color:#64748b;">Source</td><td style="padding:12px 0;border-top:1px solid #e2e8f0;">${safeSource}</td></tr>
                 </table>
                 <div style="margin-top:24px;padding:20px;background:#f8fafc;border-radius:10px;">

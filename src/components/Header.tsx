@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-export function Header() {
+export function Header({ onMockupClick }: { onMockupClick: () => void }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ export function Header() {
             Process
           </a>
           <Button
-            onClick={() => handleNavClick("contact")}
+            onClick={onMockupClick}
             className="rounded-lg bg-blue-600 hover:bg-blue-700"
           >
             Start a project <ArrowUpRight data-icon="inline-end" />
@@ -125,7 +125,7 @@ export function Header() {
             Process
           </a>
           <Button
-            onClick={() => handleNavClick("contact")}
+            onClick={onMockupClick}
             className="rounded-lg bg-blue-600 hover:bg-blue-700"
           >
             Get a free mockup site

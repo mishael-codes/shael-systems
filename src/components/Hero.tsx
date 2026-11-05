@@ -1,9 +1,8 @@
 import { MessageCircle } from "lucide-react";
 import { Button } from "./ui/button";
 
-export function Hero() {
+export function Hero({ onMockupClick }: { onMockupClick: () => void }) {
   const handleWhatsApp = () => window.open("https://wa.me/+2348067575432?text=Hi, I'm interested in your web services", "_blank");
-  const handleGetStarted = () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section className="relative overflow-hidden border-b border-blue-100 bg-white px-6 pb-20 pt-16 sm:pb-28 sm:pt-24">
@@ -24,7 +23,7 @@ export function Hero() {
             <Button
               size="lg"
               className="h-14 rounded-lg bg-blue-600 px-7 text-base hover:bg-blue-700 cursor-pointer"
-              onClick={handleGetStarted}
+              onClick={onMockupClick}
             >
               Get a free mockup site 
               {/* <ArrowUpRight data-icon="inline-end" /> */}
