@@ -6,3 +6,6 @@ Allow: /
 
 # Point search engines to the sitemap
 Sitemap: https://shaelsystems.com/sitemap.xml
+
+# Machine-readable service catalog for AI agents
+Ai-Catalog: https://shaelsystems.com/ai-catalog.json

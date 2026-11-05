@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schemaVersion": "1.0",
+  "lastUpdated": "2026-11-05",
+  "site": {
+    "name": "Shael Systems",
+    "url": "https://shaelsystems.com/",
+    "description": "A web development studio that builds clear, credible digital products for growing businesses.",
+    "language": "en",
+    "locale": "en-NG",
+    "operator": "Mishael Enyi",
+    "serviceArea": "Worldwide",
+    "primaryCurrency": "USD"
+  },
+  "services": [
+    {
+      "id": "landing-pages",
+      "name": "Landing Pages",
+      "url": "https://shaelsystems.com/landing-pages",
+      "description": "Conversion-focused pages for lead generation, sales campaigns, and audience growth.",
+      "bestFor": [
+        "campaigns",
+        "service businesses",
+        "product launches",
+        "lead generation"
+      ],
+      "startingPrice": {
+        "amount": 350,
+        "currency": "USD",
+        "label": "Starting from $350"
+      }
+    },
+    {
+      "id": "booking-appointment-sites",
+      "name": "Booking & Appointment Sites",
+      "url": "https://shaelsystems.com/#services",
+      "description": "Websites that help customers discover services and book appointments without unnecessary back-and-forth.",
+      "bestFor": [
+        "beauty businesses",
+        "consultants",
+        "local service businesses",
+        "appointment-based businesses"
+      ],
+      "startingPrice": {
+        "amount": 1200,
+        "currency": "USD",
+        "label": "Starting from $1,200"
+      },
+      "included": [
+        "Service and availability presentation",
+        "Booking or appointment enquiry flow",
+        "WhatsApp and email notifications",
+        "Three months of post-launch support"
+      ]
+    },
+    {
+      "id": "ecommerce-websites",
+      "name": "E-Commerce Websites",
+      "url": "https://shaelsystems.com/#services",
+      "description": "Online stores with product browsing, payment processing, inventory management, and order notifications.",
+      "bestFor": [
+        "retail brands",
+        "product businesses",
+        "online stores",
+        "bakeries and food businesses"
+      ],
+      "startingPrice": {
+        "amount": 5000,
+        "currency": "USD",
+        "label": "Starting from $5,000"
+      }
+    },
+    {
+      "id": "custom-web-development",
+      "name": "Custom Web Development",
+      "url": "https://shaelsystems.com/#services",
+      "description": "Bespoke dashboards, portals, and web applications with secure workflows and integrations.",
+      "bestFor": [
+        "SaaS products",
+        "internal tools",
+        "client portals",
+        "business platforms"
+      ],
+      "startingPrice": {
+        "amount": 8000,
+        "currency": "USD",
+        "label": "Starting from $8,000"
+      }
+    }
+  ],
+  "sharedCapabilities": [
+    "Responsive design",
+    "Modern user experience",
+    "Clean, maintainable code",
+    "Strategy and information architecture",
+    "Post-launch technical support"
+  ],
+  "portfolio": [
+    {
+      "name": "Gift Pastries",
+      "url": "https://shaelsystems.com/case-study/gift-pastries",
+      "type": "E-commerce and lead generation"
+    },
+    {
+      "name": "Jemmy Glam",
+      "url": "https://shaelsystems.com/case-study/jemmy-glam",
+      "type": "Service business and appointment site"
+    },
+    {
+      "name": "Cuttr",
+      "url": "https://shaelsystems.com/case-study/cuttr",
+      "type": "Custom web application"
+    }
+  ],
+  "actions": {
+    "requestCustomQuote": {
+      "label": "Get a custom quote",
+      "url": "https://shaelsystems.com/#contact",
+      "method": "form"
+    },
+    "requestFreeMockup": {
+      "label": "Get a free mockup site",
+      "url": "https://shaelsystems.com/",
+      "method": "modal form",
+      "fields": [
+        "name",
+        "email",
+        "business",
+        "phone",
+        "businessType",
+        "industry",
+        "goals"
+      ]
+    },
+    "whatsapp": {
+      "label": "Chat on WhatsApp",
+      "url": "https://wa.me/2348067575432"
+    }
+  },
+  "contact": {
+    "email": "hello@shaelsystems.com",
+    "whatsapp": "https://wa.me/2348067575432",
+    "phone": "+234 806 757 5432",
+    "responseTime": "Usually within 24 hours"
+  },
+  "routes": [
+    {
+      "path": "/",
+      "name": "Homepage",
+      "purpose": "Overview of services, work, process, FAQs, and contact options"
+    },
+    {
+      "path": "/landing-pages",
+      "name": "Landing Pages",
+      "purpose": "Dedicated landing-page services, packages, and quote form"
+    },
+    {
+      "path": "/sitemap.xml",
+      "name": "Sitemap",
+      "purpose": "Discoverable public routes"
+    }
+  ],
+  "policies": {
+    "pricing": "All prices are starting points in USD. Final pricing depends on goals, scope, content, integrations, and timeline.",
+    "availability": "Projects are scoped after an enquiry and tailored to the client's requirements."
+  }
+}

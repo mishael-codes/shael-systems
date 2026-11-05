@@ -31,4 +31,5 @@ All packages include modern design, clean code, mobile-responsive layouts, and p
 
 - [Homepage](https://shaelsystems.com/)
 - [Landing Pages] (https://shaelsystems.com/landing-pages)
+- [AI Catalog](https://shaelsystems.com/ai-catalog.json)
 - [Sitemap](https://shaelsystems.com/sitemap.xml)
