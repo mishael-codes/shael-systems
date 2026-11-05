@@ -7,11 +7,12 @@
 
 ## Services
 
-Shael Systems offers three core service packages:
+Shael Systems offers four core service packages:
 
-- **Booking & Appointment Sites** — Clients can book appointments without calling; includes three months of post-launch support. Starting from $1,500 / ₦300,000.
-- **E-Commerce Websites** — Full online stores with payment processing, inventory management, and order notifications. Starting from $5,000 / ₦550,000.
-- **Custom Web Development** — Bespoke dashboards, portals, and web applications with secure access control, analytics, and payment integration. Starting from $8,000 / ₦1,000,000.
+- **Landing Pages** — Conversion-focused pages for lead generation, sales campaigns, and audience growth. Starting from $350.
+- **Booking & Appointment Sites** — Clients can book appointments without calling; includes three months of post-launch support. Starting from $1,200.
+- **E-Commerce Websites** — Full online stores with payment processing, inventory management, and order notifications. Starting from $5,000.
+- **Custom Web Development** — Bespoke dashboards, portals, and web applications with secure access control, analytics, and payment integration. Starting from $8,000.
 
 All packages include modern design, clean code, mobile-responsive layouts, and post-launch support.
 
@@ -29,4 +30,5 @@ All packages include modern design, clean code, mobile-responsive layouts, and p
 ## Optional: Full content
 
 - [Homepage](https://shaelsystems.com/)
+- [Landing Pages] (https://shaelsystems.com/landing-pages)
 - [Sitemap](https://shaelsystems.com/sitemap.xml)

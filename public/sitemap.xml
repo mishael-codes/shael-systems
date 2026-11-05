@@ -9,6 +9,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Landing Pages -->
+  <url>
+    <loc>https://shaelsystems.com/landing-pages</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Case Studies -->
   <url>
     <loc>https://shaelsystems.com/case-study/gift-pastries</loc>

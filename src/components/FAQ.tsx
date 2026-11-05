@@ -10,12 +10,13 @@ import {
 const faqs = [
   {
     question: "How much does a website cost?",
-    answer: "",
+    answer:
+      "Landing page packages start from $350 USD. Booking and appointment sites start from $1,500 USD, e-commerce websites from $5,000 USD, and custom web development from $8,000 USD. These are starting points; your final quote depends on the page goal, features, integrations, and timeline.",
   },
   {
     question: "How long does it take to build a website?",
     answer:
-      "Most websites are built and launched within 2-4 weeks. The exact timeline depends on your package and how quickly you provide content and feedback. The Starter package is usually fastest, while Growth and Pro plans may take a bit longer due to additional features. We'll give you a clear timeline before we start.",
+      "Most websites are built and launched within 2-4 weeks. The exact timeline depends on your package and how quickly you provide content and feedback. The Launch package is usually fastest, while Growth and Campaign may take a bit longer due to additional features. We'll give you a clear timeline before we start.",
   },
   {
     question: "Do you offer revisions?",
@@ -25,7 +26,7 @@ const faqs = [
   {
     question: "What kind of support do you provide?",
     answer:
-      "Every package includes monthly support that covers hosting, updates, security, and technical help. The Starter plan includes basic support, Growth adds monthly content updates, and Pro includes priority support with faster response times. We handle the tech so you can focus on your business.",
+      "Every package includes support through launch, covering technical guidance and fixes during the build. Ongoing hosting, updates, security, and content changes can be scoped into a monthly support plan. We handle the tech so you can focus on your business.",
   },
   {
     question: "Will my website be mobile-friendly?",
@@ -65,9 +66,7 @@ export function FAQ() {
                 </span>
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
-                {faq.question === "How much does a website cost?"
-                  ? "Every project is scoped around your goals, features, and timeline. Get in touch with a few details about what you want to build and we’ll send a tailored quote with clear next steps."
-                  : faq.answer}
+                {faq.answer}
               </AccordionContent>
             </AccordionItem>
           ))}

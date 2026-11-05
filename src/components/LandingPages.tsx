@@ -57,6 +57,46 @@ const benefits = [
   "You can measure interest instead of guessing",
 ];
 
+const packages = [
+  {
+    name: "Launch",
+    price: "$350",
+    description:
+      "A focused one-page site for a new offer, service, or personal brand.",
+    features: [
+      "Strategy and page structure",
+      "Responsive one-page design",
+      "Lead, booking, or WhatsApp CTA",
+      "Basic SEO setup",
+    ],
+  },
+  {
+    name: "Growth",
+    price: "$650",
+    description:
+      "A conversion-focused landing page for businesses ready to generate more enquiries.",
+    features: [
+      "Everything in Launch",
+      "Conversion-focused copy direction",
+      "Testimonials, FAQs, and trust sections",
+      "Analytics and form integration",
+    ],
+    featured: true,
+  },
+  {
+    name: "Campaign",
+    price: "$950",
+    description:
+      "A polished campaign experience for a launch, promotion, or high-value offer.",
+    features: [
+      "Everything in Growth",
+      "Custom visual direction and interactions",
+      "Multiple conversion paths",
+      "Launch support and optimisation pass",
+    ],
+  },
+];
+
 type QuoteFormProps = {
   compact?: boolean;
 };
@@ -217,7 +257,7 @@ export function LandingPages() {
                 variant="outline"
                 className="h-14 cursor-pointer rounded-lg border-blue-200 px-7 text-base text-blue-700 hover:bg-blue-50"
               >
-                <a href="#why-website">Why a website matters</a>
+                <a href="#pricing">See packages</a>
               </Button>
             </div>
             <div className="mt-12 grid max-w-xl grid-cols-3 border-y border-blue-200 py-5 text-left">
@@ -390,6 +430,81 @@ export function LandingPages() {
               Tell us your outcome <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
+        </div>
+      </section>
+
+      <section id="pricing" className="scroll-mt-24 bg-[#f4f8ff] px-6 py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
+              Simple starting points
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold leading-tight text-slate-950 sm:text-5xl">
+              Choose the right level of momentum.
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-slate-600">
+              Every project is tailored to your goals, but these packages make
+              it easier to understand where your investment starts.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {packages.map((plan) => (
+              <article
+                key={plan.name}
+                className={`relative flex flex-col border bg-white p-7 shadow-sm sm:p-8 ${
+                  plan.featured
+                    ? "border-blue-600 shadow-[0_20px_50px_rgba(37,99,235,0.16)]"
+                    : "border-blue-100"
+                }`}
+              >
+                {plan.featured && (
+                  <span className="absolute -top-3 left-7 rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                    Most popular
+                  </span>
+                )}
+                <h3 className="text-2xl font-semibold text-slate-950">
+                  {plan.name}
+                </h3>
+                <p className="mt-4 min-h-14 leading-7 text-slate-600">
+                  {plan.description}
+                </p>
+                <div className="mt-7 border-y border-slate-200 py-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-600">
+                    Starting from
+                  </p>
+                  <p className="mt-2 text-4xl font-semibold tracking-tight text-slate-950">
+                    {plan.price}
+                  </p>
+                </div>
+                <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-700">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex gap-3">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-blue-600" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Button
+                  asChild
+                  className={`mt-8 w-full cursor-pointer ${
+                    plan.featured
+                      ? "bg-blue-600 hover:bg-blue-700"
+                      : "border-blue-200 text-blue-700 hover:bg-blue-50"
+                  }`}
+                  variant={plan.featured ? "default" : "outline"}
+                >
+                  <a href="#landing-quote">
+                    Start with {plan.name} <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </article>
+            ))}
+          </div>
+          <p className="mt-8 text-center text-sm text-slate-500">
+            Prices are starting points in USD. Hosting, domain, copywriting,
+            and custom integrations can be scoped separately.
+          </p>
         </div>
       </section>
 
