@@ -26,6 +26,7 @@ const quoteRequestSchema = z
 type VercelRequest = {
   method?: string;
   body?: unknown;
+  headers?: Record<string, string | string[] | undefined>;
   on?: (
     event: "data" | "end" | "error",
     handler: (chunk?: unknown) => void,
@@ -35,7 +36,45 @@ type VercelRequest = {
 type VercelResponse = {
   status: (code: number) => VercelResponse;
   json: (payload: Record<string, unknown>) => VercelResponse;
+  setHeader?: (name: string, value: string | number) => VercelResponse;
 };
+
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 10;
+const requestTimestamps = new Map<string, number[]>();
+
+function getHeader(req: VercelRequest, name: string) {
+  const value = req.headers?.[name] ?? req.headers?.[name.toLowerCase()];
+  return Array.isArray(value) ? value[0] : value;
+}
+
+function isAllowedOrigin(req: VercelRequest) {
+  const origin = getHeader(req, "origin");
+  if (!origin) return false;
+
+  return (
+    origin === "https://shaelsystems.com" ||
+    origin === "https://www.shaelsystems.com" ||
+    /^https?:\/\/localhost(?::\d+)?$/.test(origin) ||
+    /^https?:\/\/127\.0\.0\.1(?::\d+)?$/.test(origin)
+  );
+}
+
+function isRateLimited(req: VercelRequest) {
+  const forwardedFor = getHeader(req, "x-forwarded-for");
+  const clientKey =
+    forwardedFor?.split(",")[0]?.trim() ||
+    getHeader(req, "x-real-ip") ||
+    "unknown-client";
+  const now = Date.now();
+  const recentRequests = (requestTimestamps.get(clientKey) ?? []).filter(
+    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS,
+  );
+
+  recentRequests.push(now);
+  requestTimestamps.set(clientKey, recentRequests);
+  return recentRequests.length > RATE_LIMIT_MAX_REQUESTS;
+}
 
 function parseRequestBody(
   req: VercelRequest,
@@ -128,6 +167,17 @@ function sanitizeBody(body: Record<string, unknown>) {
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  if (!isAllowedOrigin(req)) {
+    return res.status(403).json({ error: "Request origin is not allowed" });
+  }
+
+  if (isRateLimited(req)) {
+    res.setHeader?.("Retry-After", Math.ceil(RATE_LIMIT_WINDOW_MS / 1000));
+    return res.status(429).json({
+      error: "Too many requests. Please try again later.",
+    });
   }
 
   const runtimeProcess = globalThis as typeof globalThis & {
