@@ -15,6 +15,7 @@ import { Footer } from "./components/Footer";
 import { CaseStudy } from "./components/CaseStudy";
 import { NotFound } from "./components/NotFound";
 import { MockupModal } from "./components/MockupModal";
+import { PrivacyPolicy, TermsOfService } from "./components/LegalPages";
 
 function ScrollToHashElement() {
   const { hash, pathname } = useLocation();
@@ -97,6 +98,8 @@ export default function App() {
           />
           <Route path="/landing-pages" element={<LandingPages />} />
           <Route path="/case-study/:id" element={<CaseStudy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

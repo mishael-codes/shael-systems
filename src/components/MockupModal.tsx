@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { Link } from "react-router-dom";
 
 type MockupModalProps = {
   open: boolean;
@@ -134,6 +135,17 @@ export function MockupModal({ open, onClose }: MockupModalProps) {
           >
             {status === "sending" ? "Sending..." : "Request my free mockup"}
           </Button>
+          <p className="text-center text-xs leading-relaxed text-slate-500">
+            By clicking &quot;Request my free mockup&quot;, you agree to our{" "}
+            <Link className="text-blue-600 hover:underline" to="/privacy-policy">
+              Privacy Policy
+            </Link>{" "}
+            and{" "}
+            <Link className="text-blue-600 hover:underline" to="/terms-of-service">
+              Terms of Service
+            </Link>
+            .
+          </p>
         </form>
       </div>
     </div>

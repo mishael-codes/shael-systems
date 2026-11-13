@@ -7,6 +7,7 @@ import { Card } from "./ui/card";
 import { z } from "zod";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
 
 const contactFormSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
@@ -210,6 +211,17 @@ export function ContactCTA() {
                 <Send className="mr-2 h-5 w-5" />
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
+              <p className="text-center text-xs leading-relaxed text-gray-500">
+                By clicking &quot;Send Message&quot;, you agree to our{" "}
+                <Link className="text-blue-600 hover:underline" to="/privacy-policy">
+                  Privacy Policy
+                </Link>{" "}
+                and{" "}
+                <Link className="text-blue-600 hover:underline" to="/terms-of-service">
+                  Terms of Service
+                </Link>
+                .
+              </p>
             </form>
           </Card>
 

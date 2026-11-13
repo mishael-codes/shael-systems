@@ -1,5 +1,6 @@
 import { Mail, Phone } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -106,6 +107,14 @@ export function Footer() {
           <p className="text-gray-400 text-sm">
             © {currentYear} Shael Systems. All rights reserved.
           </p>
+          <div className="mt-3 flex justify-center gap-4 text-sm">
+            <Link to="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms-of-service" className="text-gray-400 hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

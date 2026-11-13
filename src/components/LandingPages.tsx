@@ -13,6 +13,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { Link } from "react-router-dom";
 
 const outcomes = [
   {
@@ -216,6 +217,17 @@ function QuoteForm({ compact = false }: QuoteFormProps) {
         <Send className="mr-2 h-5 w-5" />
         {status === "sending" ? "Sending..." : "Get my landing page quote"}
       </Button>
+      <p className="text-center text-xs leading-relaxed text-slate-500">
+        By clicking &quot;Get my landing page quote&quot;, you agree to our{" "}
+        <Link className="text-blue-600 hover:underline" to="/privacy-policy">
+          Privacy Policy
+        </Link>{" "}
+        and{" "}
+        <Link className="text-blue-600 hover:underline" to="/terms-of-service">
+          Terms of Service
+        </Link>
+        .
+      </p>
       <p className="text-center text-xs leading-relaxed text-slate-500">
         Tell us the goal. We&apos;ll reply with a thoughtful recommendation and
         clear next steps.
