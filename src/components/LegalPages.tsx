@@ -43,9 +43,12 @@ export function PrivacyPolicy() {
         <h2>1. Who we are</h2>
         <p>
           Shael Systems is the data controller responsible for the personal
-          information described in this policy. For privacy questions or requests,
-          contact us at{" "}
-          <a className="text-blue-600 hover:underline" href="mailto:hello@shaelsystems.com">
+          information described in this policy. For privacy questions or
+          requests, contact us at{" "}
+          <a
+            className="text-blue-600 hover:underline"
+            href="mailto:hello@shaelsystems.com"
+          >
             hello@shaelsystems.com
           </a>
           .
@@ -61,9 +64,9 @@ export function PrivacyPolicy() {
           <li>Your project goals or message.</li>
         </ul>
         <p>
-          We also receive basic technical information that your browser and hosting
-          provider may process to deliver and secure the website. We do not
-          intentionally collect sensitive personal data through these forms.
+          We also receive basic technical information that your browser and
+          hosting provider may process to deliver and secure the website. We do
+          not intentionally collect sensitive personal data through these forms.
         </p>
       </section>
       <section>
@@ -73,7 +76,10 @@ export function PrivacyPolicy() {
           <li>Respond to your request and discuss or prepare our services.</li>
           <li>Send the information to our business email for follow-up.</li>
           <li>Prevent spam and protect the forms and website from misuse.</li>
-          <li>Meet legal, accounting, or dispute-resolution obligations where required.</li>
+          <li>
+            Meet legal, accounting, or dispute-resolution obligations where
+            required.
+          </li>
         </ul>
         <p>
           We do not sell your personal information or use it for unrelated
@@ -83,11 +89,12 @@ export function PrivacyPolicy() {
       <section>
         <h2>4. Legal bases</h2>
         <p>
-          Depending on the context, we process information because it is necessary
-          to take steps at your request before entering a contract, to perform a
-          contract, to comply with a legal obligation, to prevent fraud or abuse,
-          or because you have given consent. You may withdraw consent where consent
-          is the basis, without affecting processing that occurred before withdrawal.
+          Depending on the context, we process information because it is
+          necessary to take steps at your request before entering a contract, to
+          perform a contract, to comply with a legal obligation, to prevent
+          fraud or abuse, or because you have given consent. You may withdraw
+          consent where consent is the basis, without affecting processing that
+          occurred before withdrawal.
         </p>
       </section>
       <section>
@@ -103,8 +110,8 @@ export function PrivacyPolicy() {
       <section>
         <h2>6. Retention and security</h2>
         <p>
-          We keep enquiry information only for as long as reasonably necessary to
-          respond, manage a prospective or completed engagement, meet legal
+          We keep enquiry information only for as long as reasonably necessary
+          to respond, manage a prospective or completed engagement, meet legal
           obligations, resolve disputes, and protect our legitimate interests.
           We use reasonable safeguards, but no internet transmission or storage
           system can be guaranteed completely secure.
@@ -116,11 +123,14 @@ export function PrivacyPolicy() {
           Subject to applicable law, you may ask us for access to, correction,
           deletion, restriction of, or a copy of your personal information, or
           object to certain processing. Send a request to{" "}
-          <a className="text-blue-600 hover:underline" href="mailto:hello@shaelsystems.com">
+          <a
+            className="text-blue-600 hover:underline"
+            href="mailto:hello@shaelsystems.com"
+          >
             hello@shaelsystems.com
           </a>
-          . You may also contact the Nigeria Data Protection Commission (NDPC) if
-          you believe your rights have not been respected.
+          . You may also contact the Nigeria Data Protection Commission (NDPC)
+          if you believe your rights have not been respected.
         </p>
       </section>
       <section>
@@ -128,17 +138,24 @@ export function PrivacyPolicy() {
         <p>
           This website does not currently use advertising, analytics, or other
           non-essential cookies. It may use strictly necessary technical storage
-          or browser storage, such as a short form-submission cooldown, to operate
-          and protect the forms. If our use of cookies changes, we will update
-          this policy and provide any notice or choices required by law.
+          or browser storage, such as a short form-submission cooldown, to
+          operate and protect the forms. If our use of cookies changes, we will
+          update this policy and provide any notice or choices required by law.
         </p>
       </section>
       <section>
         <h2>9. Changes and contact</h2>
         <p>
-          We may update this policy when our services or legal obligations change.
-          The date above shows when it was last revised. If you have a question or
-          want to exercise a privacy right, email hello@shaelsystems.com.
+          We may update this policy when our services or legal obligations
+          change. The date above shows when it was last revised. If you have a
+          question or want to exercise a privacy right, email{" "}
+          <a
+            className="text-blue-600 hover:underline"
+            href="mailto:hello@shaelsystems.com"
+          >
+            hello@shaelsystems.com
+          </a>
+          .
         </p>
       </section>
     </LegalLayout>
